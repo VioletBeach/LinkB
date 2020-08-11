@@ -2,6 +2,7 @@ package com.example.rinkb;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,10 +11,15 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
+    private ViewPager mViewPager;
+    SectionPageAdapter adapter = new SectionPageAdapter(getSupportFragmentManager());
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mViewPager = (ViewPager) findViewById(R.id.container);
+        setupViewPager(mViewPager);
+
 
         Button btnStartLinkB = (Button)findViewById(R.id.btnStartLinkB);
 
@@ -26,5 +32,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+    }
+    public void setupViewPager(ViewPager viewPager) {
+        adapter.addFragment(new MainActivityFrag1(), "1");
+        adapter.addFragment(new MainActivityFrag2(), "2");
+        adapter.addFragment(new MainActivityFrag1(), "3");
+        adapter.addFragment(new MainActivityFrag2(), "4");
+        viewPager.setAdapter(adapter);
     }
 }
