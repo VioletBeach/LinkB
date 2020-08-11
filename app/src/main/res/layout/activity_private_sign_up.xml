@@ -79,7 +79,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="20"
                         android:hint="ID(이메일주소)를 입력하세요"
-                        android:textColorHint="#ffffff">
+                        android:textColorHint="#ffffff"
+                        android:id="@+id/edit_sigup_email">
                     </EditText>
                 </LinearLayout>
                 <LinearLayout
@@ -93,11 +94,13 @@
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="로그인"
+                        android:text="중복확인"
                         android:background="#00000000"
                         android:textColor="#ffffff"
                         android:textSize="7.5pt"
-                        android:textStyle="bold"></Button>
+                        android:textStyle="bold"
+                        android:id="@+id/btn_dup_check">
+                    </Button>
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -119,7 +122,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="20"
                         android:hint="비밀번호"
-                        android:textColorHint="#ffffff">
+                        android:textColorHint="#ffffff"
+                        android:id="@+id/edit_sigup_pwd" >
                     </EditText>
                 </LinearLayout>
                 <LinearLayout
@@ -147,7 +151,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="20"
                         android:hint="비밀번호확인"
-                        android:textColorHint="#ffffff">
+                        android:textColorHint="#ffffff"
+                        android:id="@+id/edit_sigup_chpwd" >
                     </EditText>
                 </LinearLayout>
                 <LinearLayout
@@ -182,7 +187,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="20"
                         android:hint="이름"
-                        android:textColorHint="#ffffff">
+                        android:textColorHint="#ffffff"
+                        android:id="@+id/edit_sigup_name" >
                     </EditText>
                 </LinearLayout>
                 <LinearLayout
@@ -210,7 +216,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="20"
                         android:hint="전화번호"
-                        android:textColorHint="#ffffff">
+                        android:textColorHint="#ffffff"
+                        android:id="@+id/edit_sigup_phone" >
                     </EditText>
                 </LinearLayout>
                 <LinearLayout
@@ -238,7 +245,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="20"
                         android:hint="활동장소"
-                        android:textColorHint="#ffffff">
+                        android:textColorHint="#ffffff"
+                        android:id="@+id/edit_sigup_work_place" >
                     </EditText>
                 </LinearLayout>
                 <LinearLayout
@@ -273,7 +281,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="20"
                         android:hint="근무회사"
-                        android:textColorHint="#ffffff">
+                        android:textColorHint="#ffffff"
+                        android:id="@+id/edit_sigup_work_company" >
                     </EditText>
                 </LinearLayout>
                 <LinearLayout
@@ -301,7 +310,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="20"
                         android:hint="근무부서"
-                        android:textColorHint="#ffffff">
+                        android:textColorHint="#ffffff"
+                        android:id="@+id/edit_sigup_work_team" >
                     </EditText>
                 </LinearLayout>
                 <LinearLayout
@@ -329,7 +339,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="20"
                         android:hint="직급"
-                        android:textColorHint="#ffffff">
+                        android:textColorHint="#ffffff"
+                        android:id="@+id/edit_sigup_work_position" >
                     </EditText>
                 </LinearLayout>
                 <LinearLayout
