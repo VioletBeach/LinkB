@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import me.relex.circleindicator.CircleIndicator;
+
 public class MainActivity extends AppCompatActivity {
 
     private ViewPager mViewPager;
@@ -17,8 +19,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Intent intent = new Intent(this, LoadingActivity.class);
+        startActivity(intent);
         mViewPager = (ViewPager) findViewById(R.id.container);
         setupViewPager(mViewPager);
+        CircleIndicator indicator = (CircleIndicator) findViewById(R.id.indicator);
+        indicator.setViewPager(mViewPager);
 
 
         Button btnStartLinkB = (Button)findViewById(R.id.btnStartLinkB);
@@ -36,8 +42,7 @@ public class MainActivity extends AppCompatActivity {
     public void setupViewPager(ViewPager viewPager) {
         adapter.addFragment(new MainActivityFrag1(), "1");
         adapter.addFragment(new MainActivityFrag2(), "2");
-        adapter.addFragment(new MainActivityFrag1(), "3");
-        adapter.addFragment(new MainActivityFrag2(), "4");
+        adapter.addFragment(new MainActivityFrag3(), "3");
         viewPager.setAdapter(adapter);
     }
 }
