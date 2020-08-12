@@ -121,8 +121,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="157.5"
-                        android:background="#ffffff"
-                        android:hint="  이메일을 입력하세요"
+                        android:background="@drawable/login_edit"
+                        android:hint="  이메일 주소를 입력해주세요"
                         android:id="@+id/edit_login_email">
                     </EditText>
                     <LinearLayout
@@ -149,8 +149,8 @@
                         <EditText
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="#ffffff"
-                            android:hint="비밀번호를 입력하세요"
+                            android:background="@drawable/login_edit"
+                            android:hint="  비밀번호를 입력해주세요"
                             android:id="@+id/edit_login_pwd">
                         </EditText>
                     </LinearLayout>
