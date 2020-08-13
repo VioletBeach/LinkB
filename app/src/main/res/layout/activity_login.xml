@@ -29,16 +29,8 @@
                 android:background="#00000000"
                 android:minHeight="?attr/actionBarSize"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                android:id="@+id/login_toolbar"
                 app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-                <Button
-                    android:id="@+id/btnBack"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="뒤로"
-                    android:background="#00000000"
-                    android:textColor="#ffffff"
-                    android:textSize="10pt"
-                    android:layout_weight="24"></Button>
                 <TextView
                     android:id="@+id/toolbar_title"
                     android:layout_width="wrap_content"
@@ -121,8 +113,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="157.5"
+                        android:paddingHorizontal="10pt"
                         android:background="@drawable/login_edit"
-                        android:hint="  이메일 주소를 입력해주세요"
+                        android:hint="이메일 주소를 입력해주세요"
                         android:id="@+id/edit_login_email">
                     </EditText>
                     <LinearLayout
@@ -150,7 +143,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@drawable/login_edit"
-                            android:hint="  비밀번호를 입력해주세요"
+                            android:paddingHorizontal="10pt"
+                            android:hint="비밀번호를 입력해주세요"
                             android:id="@+id/edit_login_pwd">
                         </EditText>
                     </LinearLayout>

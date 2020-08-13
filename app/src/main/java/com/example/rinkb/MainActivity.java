@@ -13,6 +13,7 @@ import me.relex.circleindicator.CircleIndicator;
 
 public class MainActivity extends AppCompatActivity {
 
+    private BackPressHandler backPressHandler = new BackPressHandler(this);
     private ViewPager mViewPager;
     SectionPageAdapter adapter = new SectionPageAdapter(getSupportFragmentManager());
     @Override
@@ -45,4 +46,12 @@ public class MainActivity extends AppCompatActivity {
         adapter.addFragment(new MainActivityFrag3(), "3");
         viewPager.setAdapter(adapter);
     }
+
+
+    @Override
+    public void onBackPressed() {
+        // Default
+        backPressHandler.onBackPressed();
+    }
+
 }
