@@ -154,6 +154,11 @@
                         android:textColorHint="#ffffff"
                         android:id="@+id/edit_sigup_chpwd" >
                     </EditText>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/pwdChk"
+                        />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="wrap_content"

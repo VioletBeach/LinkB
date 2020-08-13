@@ -5,9 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -44,9 +47,29 @@ public class privateSignUp extends AppCompatActivity {
         final EditText editWorkCompany = (EditText)findViewById(R.id.edit_sigup_work_company);
         final EditText editWorkTeam = (EditText)findViewById(R.id.edit_sigup_work_team);
         final EditText editWorkPosition = (EditText)findViewById(R.id.edit_sigup_work_position);
-
+        final ImageView setImage = findViewById(R.id.pwdChk);
 
         //아이디 중복 체크를 실행했는지를 체크하는 코드
+        editChPwd.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(editPwd.getText().toString().equals(editChPwd.getText().toString())){
+                    setImage.setImageResource(R.drawable.ic_baseline_check_24);
+                }else{
+                    setImage.setImageResource(0);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
 
 
