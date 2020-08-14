@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -40,8 +41,12 @@ public class login extends AppCompatActivity {
         final RadioButton rp = (RadioButton) findViewById(R.id.radioPrivate);
         final RadioButton rc = (RadioButton) findViewById(R.id.radiCcorporate);
         final Button btnLogin = (Button) findViewById(R.id.btnLogin);
+        final ImageButton btnNaverLogin = (ImageButton) findViewById(R.id.btn_naver_login);
+        final ImageButton btnKakaoLogin = (ImageButton) findViewById(R.id.btn_kakao_login);
         editEmail = (EditText) findViewById(R.id.edit_login_email);
         editPwd = (EditText) findViewById(R.id.edit_login_pwd);
+        editEmail.setPadding(50, 0, 0, 0);
+        editPwd.setPadding(50,0, 0, 0);
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.login_toolbar);
         setSupportActionBar(myToolbar);
@@ -57,6 +62,20 @@ public class login extends AppCompatActivity {
                 String pwdEdit = editPwd.getText().toString();
                 new RestAPITaskLogin("http://101.101.161.189/api/index.php/linkb_member/login_member", idEdit, pwdEdit).execute();
 
+            }
+        });
+
+        btnNaverLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),"네이버 로그인 모듈 추가 예정",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btnKakaoLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),"카카오 로그인 모듈 추가 예정",Toast.LENGTH_SHORT).show();
             }
         });
 
