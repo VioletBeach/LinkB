@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#7842A0"
+    tools:context=".main">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="10"></LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="14.5"
+        android:gravity="center">
+        <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#00000000"
+            android:minHeight="?attr/actionBarSize"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            android:id="@+id/login_toolbar"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="LinkB"
+                android:textSize="10pt"
+                android:textColor="#ffffff"/>
+
+        </androidx.appcompat.widget.Toolbar>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/logined_main_frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="50pt"
+        />
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_marginEnd="0dp"
+        android:layout_marginStart="0dp"
+        android:layout_gravity="bottom"
+        android:background="#7842A0"
+        app:menu="@menu/bottom_navigation_main"
+        app:labelVisibilityMode="unlabeled"
+        app:itemIconTint="@color/bottom_bar_item_selector"
+        app:itemTextColor="@color/bottom_bar_item_selector"
+        android:layout_width="match_parent"
+        android:layout_height="50pt"/>
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
