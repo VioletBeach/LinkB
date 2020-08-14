@@ -54,9 +54,11 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="13.5">
+                android:layout_weight="13.5"
+                android:layout_marginBottom="16pt">
                 <RadioGroup
                     android:id="@+id/rg"
+                    android:checkedButton="@+id/radioPrivate"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
@@ -68,9 +70,14 @@
                     </LinearLayout>
                     <RadioButton
                         android:id="@+id/radioPrivate"
-                        android:layout_width="wrap_content"
+                        android:layout_width="11pt"
                         android:layout_height="match_parent"
+                        android:paddingLeft="2pt"
+                        android:button="@null"
                         android:text="개인"
+                        android:textSize="12pt"
+                        android:textColor="@color/radiobuttonstate"
+                        android:background="@drawable/radiobuttonstate"
                         android:layout_weight="16.5"
                         android:checked="true"/>
                     <LinearLayout
@@ -80,9 +87,14 @@
                     </LinearLayout>
                     <RadioButton
                         android:id="@+id/radiCcorporate"
-                        android:layout_width="wrap_content"
+                        android:layout_width="11pt"
                         android:layout_height="match_parent"
+                        android:paddingLeft="2pt"
                         android:text="기업"
+                        android:button="@null"
+                        android:background="@drawable/radiobuttonstate"
+                        android:textSize="12pt"
+                        android:textColor="@color/radiobuttonstate"
                         android:layout_weight="16.5"/>
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -95,42 +107,31 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="73.5"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:gravity="center">
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="16"></LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="20">
+                    android:layout_height="wrap_content">
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="15"></LinearLayout>
                     <EditText
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_height="23pt"
                         android:layout_weight="157.5"
-                        android:paddingHorizontal="10pt"
+                        android:layout_marginBottom="5pt"
+                        android:layout_marginHorizontal="10pt"
                         android:background="@drawable/login_edit"
                         android:hint="이메일 주소를 입력해주세요"
                         android:id="@+id/edit_login_email">
                     </EditText>
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="15"></LinearLayout>
+
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="5"></LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="20">
+                    android:layout_height="wrap_content">
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
@@ -141,9 +142,9 @@
                         android:layout_weight="157.5">
                         <EditText
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="23pt"
+                            android:layout_marginHorizontal="10pt"
                             android:background="@drawable/login_edit"
-                            android:paddingHorizontal="10pt"
                             android:hint="비밀번호를 입력해주세요"
                             android:id="@+id/edit_login_pwd">
                         </EditText>
@@ -151,13 +152,10 @@
 
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="15"></LinearLayout>
+                        android:layout_height="25pt">
+                    </LinearLayout>
                 </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="12.5"></LinearLayout>
+
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -181,7 +179,29 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="25"></LinearLayout>
+                android:gravity="center"
+                android:layout_weight="25">
+                <ImageButton
+                    android:layout_width="30pt"
+                    android:layout_height="30pt"
+                    android:layout_marginHorizontal="3pt"
+                    android:background="#00000000"
+                    android:padding="0dp"
+                    android:src="@drawable/icon_naver"
+                    android:id="@+id/btn_naver_login"
+                    android:scaleType="fitXY"
+                    />
+                <ImageButton
+                    android:layout_width="30pt"
+                    android:layout_height="30pt"
+                    android:layout_marginHorizontal="3pt"
+                    android:background="#00000000"
+                    android:padding="0dp"
+                    android:src="@drawable/icon_kakao"
+                    android:id="@+id/btn_kakao_login"
+                    android:scaleType="fitXY"
+                    />
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

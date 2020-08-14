@@ -1,12 +1,16 @@
 package com.example.rinkb;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.ColorSpace;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,17 +31,18 @@ public class privateSignUp extends AppCompatActivity {
 
     static int checkCode = 0;
     EditText editEmail;
+    LinearLayout page1,page2,page3;
+    Button btnSignUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_private_sign_up);
         editEmail =(EditText)findViewById(R.id.edit_sigup_email);
-        final Button btnSignUp = (Button)findViewById(R.id.btnSignUp);
-        final LinearLayout page1 =(LinearLayout)findViewById(R.id.page1);
-        final LinearLayout page2 =(LinearLayout)findViewById(R.id.page2);
-        final LinearLayout page3 =(LinearLayout)findViewById(R.id.page3);
-        final Button btnBack = (Button)findViewById(R.id.btnBack);
+        btnSignUp = (Button)findViewById(R.id.btnSignUp);
+        page1 =(LinearLayout)findViewById(R.id.page1);
+        page2 =(LinearLayout)findViewById(R.id.page2);
+        page3 =(LinearLayout)findViewById(R.id.page3);
         final Button btnCheck  = (Button)findViewById(R.id.btn_dup_check);
         final EditText editPwd = (EditText)findViewById(R.id.edit_sigup_pwd);
         final EditText editChPwd = (EditText)findViewById(R.id.edit_sigup_chpwd);
@@ -48,6 +53,22 @@ public class privateSignUp extends AppCompatActivity {
         final EditText editWorkTeam = (EditText)findViewById(R.id.edit_sigup_work_team);
         final EditText editWorkPosition = (EditText)findViewById(R.id.edit_sigup_work_position);
         final ImageView setImage = findViewById(R.id.pwdChk);
+
+        editEmail.setPadding(40, 0, 0, 50);
+        editPwd.setPadding(40, 0, 0, 50);
+        editChPwd.setPadding(40, 0, 0, 50);
+        editName.setPadding(40, 0, 0, 50);
+        editPhone.setPadding(40, 0, 0, 50);
+        editWorkPlace.setPadding(40, 0, 0, 50);
+        editWorkCompany.setPadding(40, 0, 0, 50);
+        editWorkTeam.setPadding(40, 0, 0, 50);
+        editWorkPosition.setPadding(40, 0, 0, 50);
+
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.signup_toolbar);
+        setSupportActionBar(myToolbar);
+        getSupportActionBar().setDisplayShowCustomEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         //아이디 중복 체크를 실행했는지를 체크하는 코드
         editChPwd.addTextChangedListener(new TextWatcher() {
@@ -68,27 +89,6 @@ public class privateSignUp extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 
-            }
-        });
-
-
-
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(page3.getVisibility()==View.VISIBLE){
-                    page1.setVisibility(View.GONE);
-                    page2.setVisibility(View.VISIBLE);
-                    page3.setVisibility(View.GONE);
-                    btnSignUp.setText("다음단계로");
-                }else if(page2.getVisibility()==View.VISIBLE){
-                    page1.setVisibility(View.VISIBLE);
-                    page2.setVisibility(View.GONE);
-                    page3.setVisibility(View.GONE);
-                }else{
-                    Intent intent = new Intent(getApplicationContext(),login.class);
-                    startActivity(intent);
-                }
             }
         });
 
@@ -126,7 +126,8 @@ public class privateSignUp extends AppCompatActivity {
                         page1.setVisibility(View.GONE);
                         page2.setVisibility(View.GONE);
                         page3.setVisibility(View.VISIBLE);
-                        btnSignUp.setText("가입완료!");
+                        btnSignUp.setText("    "+"가입완료!"+"    ");
+                        btnSignUp.setBackgroundResource(R.drawable.dup_check_button);
                     }
                 }else{
                     //회원가입 코드 !
@@ -343,5 +344,26 @@ public class privateSignUp extends AppCompatActivity {
         }
 
 
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:{ //toolbar의 back키 눌렀을 때 동작
+                if(page3.getVisibility()==View.VISIBLE){
+                    page1.setVisibility(View.GONE);
+                    page2.setVisibility(View.VISIBLE);
+                    page3.setVisibility(View.GONE);
+                    btnSignUp.setText("다음단계로");
+                    btnSignUp.setBackgroundColor(Color.argb(0,0,0,0));
+                }else if(page2.getVisibility()==View.VISIBLE){
+                    page1.setVisibility(View.VISIBLE);
+                    page2.setVisibility(View.GONE);
+                    page3.setVisibility(View.GONE);
+                }else
+                finish();
+                return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
