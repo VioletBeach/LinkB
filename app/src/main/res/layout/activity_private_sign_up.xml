@@ -79,6 +79,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="20"
                         android:hint="ID(이메일주소)를 입력하세요"
+                        android:textColor="#FFFFFF"
                         android:textColorHint="#ffffff"
                         android:id="@+id/edit_sigup_email">
                     </EditText>
@@ -123,6 +124,7 @@
                         android:layout_weight="20"
                         android:hint="비밀번호"
                         android:textColorHint="#ffffff"
+                        android:textColor="#FFFFFF"
                         android:id="@+id/edit_sigup_pwd" >
                     </EditText>
                 </LinearLayout>
@@ -151,9 +153,11 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="20"
                         android:hint="비밀번호확인"
+                        android:textColor="#FFFFFF"
                         android:textColorHint="#ffffff"
                         android:id="@+id/edit_sigup_chpwd" >
                     </EditText>
+
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -192,6 +196,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="20"
                         android:hint="이름"
+                        android:textColor="#FFFFFF"
                         android:textColorHint="#ffffff"
                         android:id="@+id/edit_sigup_name" >
                     </EditText>
@@ -221,6 +226,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="20"
                         android:hint="전화번호"
+                        android:textColor="#FFFFFF"
                         android:textColorHint="#ffffff"
                         android:id="@+id/edit_sigup_phone" >
                     </EditText>
@@ -250,6 +256,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="20"
                         android:hint="활동장소"
+                        android:textColor="#FFFFFF"
                         android:textColorHint="#ffffff"
                         android:id="@+id/edit_sigup_work_place" >
                     </EditText>
@@ -286,6 +293,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="20"
                         android:hint="근무회사"
+                        android:textColor="#FFFFFF"
                         android:textColorHint="#ffffff"
                         android:id="@+id/edit_sigup_work_company" >
                     </EditText>
@@ -315,6 +323,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="20"
                         android:hint="근무부서"
+                        android:textColor="#FFFFFF"
                         android:textColorHint="#ffffff"
                         android:id="@+id/edit_sigup_work_team" >
                     </EditText>
@@ -344,6 +353,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="20"
                         android:hint="직급"
+                        android:textColor="#FFFFFF"
                         android:textColorHint="#ffffff"
                         android:id="@+id/edit_sigup_work_position" >
                     </EditText>

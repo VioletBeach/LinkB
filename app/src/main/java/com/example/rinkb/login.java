@@ -1,13 +1,17 @@
 package com.example.rinkb;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -35,10 +39,16 @@ public class login extends AppCompatActivity {
         final RadioGroup rg = (RadioGroup) findViewById(R.id.rg);
         final RadioButton rp = (RadioButton) findViewById(R.id.radioPrivate);
         final RadioButton rc = (RadioButton) findViewById(R.id.radiCcorporate);
-        final Button btnBack = (Button) findViewById(R.id.btnBack);
         final Button btnLogin = (Button) findViewById(R.id.btnLogin);
         editEmail = (EditText) findViewById(R.id.edit_login_email);
         editPwd = (EditText) findViewById(R.id.edit_login_pwd);
+
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.login_toolbar);
+        setSupportActionBar(myToolbar);
+        getSupportActionBar().setDisplayShowCustomEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,13 +60,6 @@ public class login extends AppCompatActivity {
             }
         });
 
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
-            }
-        });
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -153,5 +156,15 @@ public class login extends AppCompatActivity {
             }
 
         }
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:{ //toolbar의 back키 눌렀을 때 동작
+                finish();
+                return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
