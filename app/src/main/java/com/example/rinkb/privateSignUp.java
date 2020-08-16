@@ -131,18 +131,21 @@ public class privateSignUp extends AppCompatActivity {
                     }
                 }else{
                     //회원가입 코드 !
-                    String emailTemp = editEmail.getText().toString();
-                    String pwdTemp = editPwd.getText().toString();
-                    String chPwdTemp=editChPwd.getText().toString();
-                    String nameTemp=editName.getText().toString();
-                    String phoneNumberTemp=editPhone.getText().toString();
-                    String workPlaceTemp=editWorkPlace.getText().toString();
-                    String workCompanyTemp=editWorkCompany.getText().toString();
-                    String workTeamTemp=editWorkTeam.getText().toString();
-                    String workPositionTemp=editWorkPosition.getText().toString();
-                    new RestAPITaskSignUp("http://101.101.161.189/api/index.php/linkb_member/insert_member",
-                            emailTemp,pwdTemp,nameTemp,phoneNumberTemp,workCompanyTemp,workPlaceTemp,workTeamTemp,workPositionTemp).execute();
-
+                    if(editWorkCompany.getText().toString().equals("")||editWorkPosition.getText().toString().equals("")||editWorkTeam.getText().toString().equals("")){
+                        Toast.makeText(getApplicationContext(),"빈 항목이 있습니다.", Toast.LENGTH_SHORT).show();
+                    }else {
+                        String emailTemp = editEmail.getText().toString();
+                        String pwdTemp = editPwd.getText().toString();
+                        String chPwdTemp = editChPwd.getText().toString();
+                        String nameTemp = editName.getText().toString();
+                        String phoneNumberTemp = editPhone.getText().toString();
+                        String workPlaceTemp = editWorkPlace.getText().toString();
+                        String workCompanyTemp = editWorkCompany.getText().toString();
+                        String workTeamTemp = editWorkTeam.getText().toString();
+                        String workPositionTemp = editWorkPosition.getText().toString();
+                        new RestAPITaskSignUp("http://101.101.161.189/api/index.php/linkb_member/insert_member",
+                                emailTemp, pwdTemp, nameTemp, phoneNumberTemp, workCompanyTemp, workPlaceTemp, workTeamTemp, workPositionTemp).execute();
+                    }
                 }
 
 

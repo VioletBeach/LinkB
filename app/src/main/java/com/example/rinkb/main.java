@@ -1,14 +1,18 @@
 package com.example.rinkb;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import androidx.appcompat.widget.Toolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 
 public class main extends AppCompatActivity {
 
@@ -24,6 +28,8 @@ public class main extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logined_main);
+
+        this.InitializeLayout();
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         // 첫 화면 지정
         FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -56,5 +62,20 @@ public class main extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    public void InitializeLayout(){
+        Toolbar toolbar = findViewById(R.id.main_nav_toolbar);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_menu_24);
+
+        DrawerLayout maindrawer = findViewById(R.id.main_drawer_layout);
+        NavigationView navigationView = findViewById(R.id.main_nav_view);
+
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, maindrawer, toolbar, R.string.open, R.string.close );
+        maindrawer.addDrawerListener(actionBarDrawerToggle);
     }
 }
