@@ -46,7 +46,20 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="130.5"></LinearLayout>
+            android:layout_weight="130.5"
+            android:gravity="center">
+
+            <!-- 2020.08.16 이재헌 / 현재 수정중 -->
+            <SeekBar
+                android:id="@+id/seekbar"
+                style="@style/Widget.AppCompat.SeekBar.Discrete"
+                android:layout_width="100pt"
+                android:layout_height="wrap_content"
+                android:max="2"
+                android:thumb="@drawable/shape_seekbar_progress"
+                android:progressDrawable="@drawable/shape_seekbar"
+                />
+        </LinearLayout>
         <LinearLayout
             android:id="@+id/page1"
             android:layout_width="match_parent"

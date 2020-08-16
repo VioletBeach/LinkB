@@ -11,11 +11,13 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.SeekBar;
 import android.widget.Toast;
 
 import org.json.JSONObject;
@@ -33,6 +35,8 @@ public class privateSignUp extends AppCompatActivity {
     EditText editEmail;
     LinearLayout page1,page2,page3;
     Button btnSignUp;
+    SeekBar mSeekBar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +57,7 @@ public class privateSignUp extends AppCompatActivity {
         final EditText editWorkTeam = (EditText)findViewById(R.id.edit_sigup_work_team);
         final EditText editWorkPosition = (EditText)findViewById(R.id.edit_sigup_work_position);
         final ImageView setImage = findViewById(R.id.pwdChk);
+        mSeekBar = (SeekBar) findViewById(R.id.seekbar);
 
         editEmail.setPadding(40, 0, 0, 50);
         editPwd.setPadding(40, 0, 0, 50);
@@ -117,6 +122,7 @@ public class privateSignUp extends AppCompatActivity {
                             page1.setVisibility(View.GONE);
                             page2.setVisibility(View.VISIBLE);
                             page3.setVisibility(View.GONE);
+                            nextPhase();
                         }
                     }
                 }else if(page2.getVisibility()==View.VISIBLE){
@@ -128,6 +134,7 @@ public class privateSignUp extends AppCompatActivity {
                         page3.setVisibility(View.VISIBLE);
                         btnSignUp.setText("    "+"가입완료!"+"    ");
                         btnSignUp.setBackgroundResource(R.drawable.dup_check_button);
+                        nextPhase();
                     }
                 }else{
                     //회원가입 코드 !
@@ -149,6 +156,15 @@ public class privateSignUp extends AppCompatActivity {
                 }
 
 
+            }
+        });
+
+        mSeekBar.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                // True doesn't propagate the event
+                // the user cannot move the indicator
+                return true;
             }
         });
 
@@ -358,15 +374,24 @@ public class privateSignUp extends AppCompatActivity {
                     page3.setVisibility(View.GONE);
                     btnSignUp.setText("다음단계로");
                     btnSignUp.setBackgroundColor(Color.argb(0,0,0,0));
+                    prePhase();
                 }else if(page2.getVisibility()==View.VISIBLE){
                     page1.setVisibility(View.VISIBLE);
                     page2.setVisibility(View.GONE);
                     page3.setVisibility(View.GONE);
+                    prePhase();
                 }else
                 finish();
                 return true;
             }
         }
         return super.onOptionsItemSelected(item);
+    }
+    public void nextPhase() {
+        mSeekBar.setProgress(mSeekBar.getProgress() + 1);
+    }
+
+    public void prePhase() {
+        mSeekBar.setProgress(mSeekBar.getProgress() - 1);
     }
 }
