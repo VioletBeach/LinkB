@@ -3,20 +3,28 @@ package com.example.rinkb;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.ColorSpace;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.warkiz.widget.IndicatorSeekBar;
 
 import org.json.JSONObject;
 
@@ -33,16 +41,23 @@ public class privateSignUp extends AppCompatActivity {
     EditText editEmail;
     LinearLayout page1,page2,page3;
     Button btnSignUp;
+    IndicatorSeekBar mSeekBar;
+    TextView seekbar_first,seekbar_second,seekbar_third;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_private_sign_up);
         editEmail =(EditText)findViewById(R.id.edit_sigup_email);
+        seekbar_first=findViewById(R.id.seekbar_first);
+        seekbar_second=findViewById(R.id.seekbar_second);
+        seekbar_third=findViewById(R.id.seekbar_third);
         btnSignUp = (Button)findViewById(R.id.btnSignUp);
         page1 =(LinearLayout)findViewById(R.id.page1);
         page2 =(LinearLayout)findViewById(R.id.page2);
         page3 =(LinearLayout)findViewById(R.id.page3);
+        mSeekBar=findViewById(R.id.seekbar);
         final Button btnCheck  = (Button)findViewById(R.id.btn_dup_check);
         final EditText editPwd = (EditText)findViewById(R.id.edit_sigup_pwd);
         final EditText editChPwd = (EditText)findViewById(R.id.edit_sigup_chpwd);
@@ -53,6 +68,10 @@ public class privateSignUp extends AppCompatActivity {
         final EditText editWorkTeam = (EditText)findViewById(R.id.edit_sigup_work_team);
         final EditText editWorkPosition = (EditText)findViewById(R.id.edit_sigup_work_position);
         final ImageView setImage = findViewById(R.id.pwdChk);
+
+        seekbar_second.setVisibility(View.INVISIBLE);
+        seekbar_third.setVisibility(View.INVISIBLE);
+
 
         editEmail.setPadding(40, 0, 0, 50);
         editPwd.setPadding(40, 0, 0, 50);
@@ -70,27 +89,30 @@ public class privateSignUp extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        //아이디 중복 체크를 실행했는지를 체크하는 코드
-        editChPwd.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-            }
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(editPwd.getText().toString().equals(editChPwd.getText().toString())){
-                    setImage.setImageResource(R.drawable.ic_baseline_check_24);
-                }else{
-                    setImage.setImageResource(0);
-                }
-            }
 
-            @Override
-            public void afterTextChanged(Editable s) {
+                //아이디 중복 체크를 실행했는지를 체크하는 코드
+                editChPwd.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-            }
-        });
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        if (editPwd.getText().toString().equals(editChPwd.getText().toString())) {
+                            setImage.setImageResource(R.drawable.ic_baseline_check_24);
+                        } else {
+                            setImage.setImageResource(0);
+                        }
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                    }
+                });
 
         btnCheck.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,6 +139,16 @@ public class privateSignUp extends AppCompatActivity {
                             page1.setVisibility(View.GONE);
                             page2.setVisibility(View.VISIBLE);
                             page3.setVisibility(View.GONE);
+                            nextPhase();
+                            Handler mHandler = new Handler();
+                            mHandler.postDelayed(new Runnable()  {
+                                public void run() {
+                                    seekbar_first.setVisibility(View.INVISIBLE);
+                                    seekbar_second.setVisibility(View.VISIBLE);
+                                    seekbar_third.setVisibility(View.INVISIBLE);
+                                }
+                            }, 300);
+
                         }
                     }
                 }else if(page2.getVisibility()==View.VISIBLE){
@@ -128,6 +160,15 @@ public class privateSignUp extends AppCompatActivity {
                         page3.setVisibility(View.VISIBLE);
                         btnSignUp.setText("    "+"가입완료!"+"    ");
                         btnSignUp.setBackgroundResource(R.drawable.dup_check_button);
+                        nextPhase();
+                        Handler mHandler = new Handler();
+                        mHandler.postDelayed(new Runnable()  {
+                            public void run() {
+                                seekbar_first.setVisibility(View.INVISIBLE);
+                                seekbar_second.setVisibility(View.INVISIBLE);
+                                seekbar_third.setVisibility(View.VISIBLE);
+                            }
+                        }, 300);
                     }
                 }else{
                     //회원가입 코드 !
@@ -151,6 +192,8 @@ public class privateSignUp extends AppCompatActivity {
 
             }
         });
+
+
 
     }
 
@@ -358,10 +401,28 @@ public class privateSignUp extends AppCompatActivity {
                     page3.setVisibility(View.GONE);
                     btnSignUp.setText("다음단계로");
                     btnSignUp.setBackgroundColor(Color.argb(0,0,0,0));
+                    prePhase();
+                    Handler mHandler = new Handler();
+                    mHandler.postDelayed(new Runnable()  {
+                        public void run() {
+                            seekbar_first.setVisibility(View.INVISIBLE);
+                            seekbar_second.setVisibility(View.VISIBLE);
+                            seekbar_third.setVisibility(View.INVISIBLE);
+                        }
+                    }, 300);
                 }else if(page2.getVisibility()==View.VISIBLE){
                     page1.setVisibility(View.VISIBLE);
                     page2.setVisibility(View.GONE);
                     page3.setVisibility(View.GONE);
+                    prePhase();
+                    Handler mHandler = new Handler();
+                    mHandler.postDelayed(new Runnable()  {
+                        public void run() {
+                            seekbar_first.setVisibility(View.VISIBLE);
+                            seekbar_second.setVisibility(View.INVISIBLE);
+                            seekbar_third.setVisibility(View.INVISIBLE);
+                        }
+                    }, 300);
                 }else
                 finish();
                 return true;
@@ -369,4 +430,19 @@ public class privateSignUp extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
+    public void nextPhase() {
+        ObjectAnimator anim = ObjectAnimator.ofFloat(mSeekBar, "progress", mSeekBar.getProgress(),mSeekBar.getProgress()+100);
+        anim.setDuration(500);
+        anim.start();
+    }
+
+    public void prePhase() {
+        ObjectAnimator anim = ObjectAnimator.ofFloat(mSeekBar, "progress", mSeekBar.getProgress(),mSeekBar.getProgress()-100);
+        anim.setDuration(500);
+        anim.start();
+    }
+
+
 }
