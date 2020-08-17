@@ -93,42 +93,63 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="15pt"
                 android:gravity="center"
                 android:layout_marginBottom="10pt"
                 >
 
-                <Button
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:background="#AE5791"
+                    android:layout_marginRight="3pt">
+                <TextView
                     android:id="@+id/main_nav_setting"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="#AE5791"
+
+                    android:drawableLeft="@drawable/gear2"
+                    android:drawablePadding="1.3pt"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="설정"
                     android:textColor="#ffffff"
-                    android:textSize="7pt"
-                    android:layout_marginRight="3pt"
-                    android:text="설정" />
+                    android:textSize="7pt" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
 
                 <Button
                     android:id="@+id/main_nav_modify"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+
                     android:background="#AE5791"
                     android:textColor="#ffffff"
                     android:textSize="7pt"
                     android:layout_marginRight="3pt"
                     android:text="정보수정" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
 
                 <Button
                     android:id="@+id/main_nav_logout"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+
                     android:background="#AE5791"
                     android:textColor="#ffffff"
                     android:textSize="7pt"
                     android:text="로그아웃" />
+                </RelativeLayout>
 
             </LinearLayout>
 
@@ -193,6 +214,10 @@
             android:textSize="8pt"
             android:text="문의하기" />
     </LinearLayout>
+
+
+
+
 
 
 </RelativeLayout>
