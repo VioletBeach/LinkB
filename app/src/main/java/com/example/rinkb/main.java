@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -34,7 +35,7 @@ public class main extends AppCompatActivity {
 
     DrawerLayout maindrawer;
     View drawerView;
-    Button close_drawer;
+    ImageButton close_drawer;
     ListView main_list;
 
     ArrayList<Main_SampleData> titleDataList;
