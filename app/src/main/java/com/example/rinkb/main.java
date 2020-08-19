@@ -53,8 +53,6 @@ public class main extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_nav_toolbar);
         setSupportActionBar(toolbar);
 
-
-
         this.InitializeLayout();
         this.InitializeListData();
         final Main_list_Adapter myAdapter = new Main_list_Adapter(this, titleDataList);
@@ -81,6 +79,7 @@ public class main extends AppCompatActivity {
 
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setItemIconSize(80);
         // 첫 화면 지정
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.logined_main_frame_layout, menu1Fragment).commitAllowingStateLoss();
