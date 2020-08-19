@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -49,6 +50,8 @@ public class main extends AppCompatActivity {
         drawerView = findViewById(R.id.main_nav_view);
         close_drawer = findViewById(R.id.btn_CloseDrawer);
         main_list = findViewById(R.id.main_nav_list);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.main_nav_toolbar);
+        setSupportActionBar(toolbar);
 
 
 
@@ -136,8 +139,16 @@ public class main extends AppCompatActivity {
                 maindrawer.openDrawer(drawerView);
                 return true;
             }
+            case R.id.action_refresh:
+                Toast.makeText(getApplicationContext(),"새로 고침 모듈", Toast.LENGTH_SHORT).show();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.icon_refresh,menu);
+        return super.onCreateOptionsMenu(menu);
     }
 }
 
