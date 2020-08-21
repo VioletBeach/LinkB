@@ -1,64 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/container"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/selector_indicator"
-            >
-        </androidx.viewpager.widget.ViewPager>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="390pt"
-            />
-        <Button
-            android:id="@+id/btnStartLinkB"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/black_button"
-            android:textSize="11pt"
-            android:text="LinkB 바로 시작하기"
-            android:textAllCaps="false"
-            android:textColor="#FFFFFF"
-            ></Button>
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_above="@+id/btnStartLinkB">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="366pt"
-            />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <me.relex.circleindicator.CircleIndicator
-            android:id="@+id/indicator"
-            app:ci_drawable="@drawable/black_indicator"
-            app:ci_width="5pt"
-            app:ci_height="5pt"
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/selector_indicator"></androidx.viewpager.widget.ViewPager>
+        </LinearLayout>
+
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="48dp" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    </LinearLayout>
 
-</FrameLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+
+
+
+    <me.relex.circleindicator.CircleIndicator
+        android:id="@+id/indicator"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        app:ci_drawable="@drawable/black_indicator"
+        app:ci_height="5pt"
+        app:ci_width="5pt"
+        android:layout_above="@+id/btnStartLinkB"
+        />
+
+    <Button
+
+        android:id="@+id/btnStartLinkB"
+        android:layout_width="match_parent"
+        android:layout_height="45pt"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/black_button"
+        android:text="LinkB 바로 시작하기"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="11pt"></Button>
+
+
+</RelativeLayout>
