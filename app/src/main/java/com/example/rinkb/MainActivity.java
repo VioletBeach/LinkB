@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.viewpagerindicator.LinePageIndicator;
+
 import me.relex.circleindicator.CircleIndicator;
 
 public class MainActivity extends AppCompatActivity {
@@ -24,11 +26,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
         mViewPager = (ViewPager) findViewById(R.id.container);
         setupViewPager(mViewPager);
-        CircleIndicator indicator = (CircleIndicator) findViewById(R.id.indicator);
+        LinePageIndicator indicator = (LinePageIndicator) findViewById(R.id.indicator);
         indicator.setViewPager(mViewPager);
 
 
-        Button btnStartLinkB = (Button)findViewById(R.id.btnStartLinkB);
+        Button btnStartLinkB = (Button)findViewById(R.id.viewpager_button);
 
         btnStartLinkB.setOnClickListener(new View.OnClickListener() {
             @Override
