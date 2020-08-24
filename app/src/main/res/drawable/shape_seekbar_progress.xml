@@ -19,8 +19,8 @@
             <solid
                 Android:color="#FFFFFF"/>
             <size
-                Android:height="5pt"
-                Android:width="5pt"/>
+                Android:height="10dp"
+                Android:width="10dp"/>
             <stroke Android:color="#00000000"
                 Android:width="20dp" />
         </shape>
