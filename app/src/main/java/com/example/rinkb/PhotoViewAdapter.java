@@ -76,81 +76,18 @@ public class PhotoViewAdapter extends RecyclerView.Adapter<PhotoViewAdapter.MyVi
             }
         });
 
-        Thread t2 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                // TODO Auto-generated method stub
-                try{
-                    URL url2 = new URL("https://kr.object.ncloudstorage.com/starthub-statics/linkb/cover/cover_20200818.jpg");
-                    InputStream is2 = url2.openStream();
-                    final Bitmap bm2 = BitmapFactory.decodeStream(is2);
-                    handler1.post(new Runnable() {
-                        @Override
-                        public void run() {  // 화면에 그려줄 작업
-                            holder.imgBanner.setImageBitmap(bm2);
-                        }
-                    });
-                    holder.imgBanner.setImageBitmap(bm2); //비트맵 객체로 보여주기
-                } catch(Exception e){
-
-                }
-
-            }
-        });
-        Thread t3 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                // TODO Auto-generated method stub
-                try{
-                    URL url3 = new URL(" https://kr.object.ncloudstorage.com/starthub-statics/linkb/cover/cover_20200818.jpg");
-                    InputStream is3 = url3.openStream();
-                    final Bitmap bm3 = BitmapFactory.decodeStream(is3);
-                    handler1.post(new Runnable() {
-                        @Override
-                        public void run() {  // 화면에 그려줄 작업
-                            holder.imgBanner.setImageBitmap(bm3);
-                        }
-                    });
-                    holder.imgBanner.setImageBitmap(bm3); //비트맵 객체로 보여주기
-                } catch(Exception e){
-
-                }
-
-            }
-        });
-        Thread t4 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                // TODO Auto-generated method stub
-                try{
-                    URL url4 = new URL(" https://kr.object.ncloudstorage.com/starthub-statics/linkb/cover/cover_20200818.jpg");
-                    InputStream is4 = url4.openStream();
-                    final Bitmap bm4 = BitmapFactory.decodeStream(is4);
-                    handler1.post(new Runnable() {
-                        @Override
-                        public void run() {  // 화면에 그려줄 작업
-                            holder.imgBanner.setImageBitmap(bm4);
-                        }
-                    });
-                    holder.imgBanner.setImageBitmap(bm4); //비트맵 객체로 보여주기
-                } catch(Exception e){
-
-                }
-
-            }
-        });
         switch(index){
             case 0:
-                t1.start();
+                holder.imgBanner.setImageResource(R.drawable.cover_20200818);
                 break;
             case 1:
-                t2.start();
+                holder.imgBanner.setImageResource(R.drawable.cover_20200818);
                 break;
             case 2:
-                t3.start();
+                holder.imgBanner.setImageResource(R.drawable.cover_20200818);
                 break;
             case 3:
-                t4.start();
+                holder.imgBanner.setImageResource(R.drawable.cover_20200818);
                 break;
         }
 
