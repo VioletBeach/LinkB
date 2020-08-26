@@ -1,22 +1,41 @@
 package com.example.rinkb;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.os.AsyncTask;
+import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.List;
 
 public class PhotoViewAdapter extends RecyclerView.Adapter<PhotoViewAdapter.MyViewHolder> {
     private Context context;
     private List<String> list;
 
+    Handler handler1 = new Handler();
+    Handler handler2 = new Handler();
+    Handler handler3 = new Handler();
+    Handler handler4 = new Handler();
     public PhotoViewAdapter(Context context, List<String> list) {
         this.context = context;
         this.list = list;
@@ -30,26 +49,111 @@ public class PhotoViewAdapter extends RecyclerView.Adapter<PhotoViewAdapter.MyVi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final MyViewHolder holder, int position) {
+        final mainHomeFrag a=new mainHomeFrag();
         int index = position % list.size();
         String item = list.get(index);
+
+        Thread t1 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                // TODO Auto-generated method stub
+                try{
+                    URL url1 = new URL(" https://kr.object.ncloudstorage.com/starthub-statics/linkb/cover/cover_20200818.jpg");
+                    InputStream is1 = url1.openStream();
+                    final Bitmap bm1 = BitmapFactory.decodeStream(is1);
+                    handler1.post(new Runnable() {
+                        @Override
+                        public void run() {  // 화면에 그려줄 작업
+                            holder.imgBanner.setImageBitmap(bm1);
+                        }
+                    });
+                    holder.imgBanner.setImageBitmap(bm1); //비트맵 객체로 보여주기
+                } catch(Exception e){
+
+                }
+
+            }
+        });
+
+        Thread t2 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                // TODO Auto-generated method stub
+                try{
+                    URL url2 = new URL("https://kr.object.ncloudstorage.com/starthub-statics/linkb/cover/cover_20200818.jpg");
+                    InputStream is2 = url2.openStream();
+                    final Bitmap bm2 = BitmapFactory.decodeStream(is2);
+                    handler1.post(new Runnable() {
+                        @Override
+                        public void run() {  // 화면에 그려줄 작업
+                            holder.imgBanner.setImageBitmap(bm2);
+                        }
+                    });
+                    holder.imgBanner.setImageBitmap(bm2); //비트맵 객체로 보여주기
+                } catch(Exception e){
+
+                }
+
+            }
+        });
+        Thread t3 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                // TODO Auto-generated method stub
+                try{
+                    URL url3 = new URL(" https://kr.object.ncloudstorage.com/starthub-statics/linkb/cover/cover_20200818.jpg");
+                    InputStream is3 = url3.openStream();
+                    final Bitmap bm3 = BitmapFactory.decodeStream(is3);
+                    handler1.post(new Runnable() {
+                        @Override
+                        public void run() {  // 화면에 그려줄 작업
+                            holder.imgBanner.setImageBitmap(bm3);
+                        }
+                    });
+                    holder.imgBanner.setImageBitmap(bm3); //비트맵 객체로 보여주기
+                } catch(Exception e){
+
+                }
+
+            }
+        });
+        Thread t4 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                // TODO Auto-generated method stub
+                try{
+                    URL url4 = new URL(" https://kr.object.ncloudstorage.com/starthub-statics/linkb/cover/cover_20200818.jpg");
+                    InputStream is4 = url4.openStream();
+                    final Bitmap bm4 = BitmapFactory.decodeStream(is4);
+                    handler1.post(new Runnable() {
+                        @Override
+                        public void run() {  // 화면에 그려줄 작업
+                            holder.imgBanner.setImageBitmap(bm4);
+                        }
+                    });
+                    holder.imgBanner.setImageBitmap(bm4); //비트맵 객체로 보여주기
+                } catch(Exception e){
+
+                }
+
+            }
+        });
         switch(index){
             case 0:
-                holder.imgBanner.setBackgroundColor(Color.YELLOW);
+                t1.start();
                 break;
             case 1:
-                holder.imgBanner.setBackgroundColor(Color.GREEN);
+                t2.start();
                 break;
             case 2:
-                holder.imgBanner.setBackgroundColor(Color.RED);
+                t3.start();
                 break;
             case 3:
-                holder.imgBanner.setBackgroundColor(Color.MAGENTA);
-                break;
-            case 4:
-                holder.imgBanner.setBackgroundColor(Color.BLUE);
+                t4.start();
                 break;
         }
+
     }
 
     @Override
@@ -65,6 +169,12 @@ public class PhotoViewAdapter extends RecyclerView.Adapter<PhotoViewAdapter.MyVi
             imgBanner = itemView.findViewById(R.id.imgBanner);
         }
     }
+
+
+
+
+
+
 }
 
 
