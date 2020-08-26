@@ -145,15 +145,11 @@
                         android:layout_weight="1"
                         android:textColor="#FFFFFF"
                         android:text="1단계"
-                        android:textSize="28dp"
+                        android:textSize="20dp"
                         android:id="@+id/seekbar_first"
                         />
 
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.3"
-                        />
+
 
                     <TextView
                         android:layout_width="0dp"
@@ -162,14 +158,10 @@
                         android:layout_weight="1"
                         android:textColor="#FFFFFF"
                         android:text="2단계"
-                        android:textSize="28dp"
+                        android:textSize="20dp"
                         android:id="@+id/seekbar_second"
                         />
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.3"
-                        />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -177,7 +169,7 @@
                         android:layout_weight="1"
                         android:textColor="#FFFFFF"
                         android:text="3단계"
-                        android:textSize="28dp"
+                        android:textSize="20dp"
                         android:id="@+id/seekbar_third"
                         />
                     <Space
@@ -216,17 +208,18 @@
                         android:layout_weight="15.3"
                         android:layout_marginRight="10dp"
                         android:hint="ID(이메일주소)를 입력하세요"
+                        android:textSize="14dp"
                         android:backgroundTint = "#FFFFFF"
                         android:textColor="#FFFFFF"
                         android:textColorHint="#ffffff"></EditText>
                     <Button
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="35dp"
                         android:text="중복확인"
                         android:layout_weight="4.7"
                         android:background="@drawable/dup_check_button"
                         android:textColor="#ffffff"
-                        android:textSize="20dp"
+                        android:textSize="14dp"
                         android:textStyle="bold"
                         android:id="@+id/btn_dup_check">
                     </Button>
@@ -255,6 +248,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="비밀번호"
+                        android:textSize="14dp"
                         android:textColorHint="#ffffff"
                         android:backgroundTint = "#FFFFFF"
                         android:textColor="#FFFFFF"
@@ -286,6 +280,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="20"
                         android:hint="비밀번호확인"
+                        android:textSize="14dp"
                         android:textColor="#FFFFFF"
                         android:textColorHint="#ffffff"
                         android:backgroundTint = "#FFFFFF"
@@ -330,6 +325,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="20"
                         android:hint="이름"
+                        android:textSize="14dp"
                         android:backgroundTint="#FFFFFF"
                         android:textColor="#FFFFFF"
                         android:textColorHint="#ffffff"
@@ -361,6 +357,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="20"
                         android:hint="전화번호"
+                        android:textSize="14dp"
                         android:backgroundTint="#FFFFFF"
                         android:textColor="#FFFFFF"
                         android:textColorHint="#ffffff"
@@ -392,6 +389,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="20"
                         android:hint="활동장소"
+                        android:textSize="14dp"
                         android:backgroundTint="#FFFFFF"
                         android:textColor="#FFFFFF"
                         android:textColorHint="#ffffff"
@@ -430,6 +428,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="20"
                         android:hint="근무회사"
+                        android:textSize="14dp"
                         android:backgroundTint="#FFFFFF"
                         android:textColor="#FFFFFF"
                         android:textColorHint="#ffffff"
@@ -461,6 +460,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="20"
                         android:hint="근무부서"
+                        android:textSize="14dp"
                         android:backgroundTint="#FFFFFF"
                         android:textColor="#FFFFFF"
                         android:textColorHint="#ffffff"
@@ -492,6 +492,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="20"
                         android:hint="직급"
+                        android:textSize="14dp"
                         android:backgroundTint="#FFFFFF"
                         android:textColor="#FFFFFF"
                         android:textColorHint="#ffffff"
@@ -525,7 +526,7 @@
                     android:text="다음단계로"
                     android:background="#00000000"
                     android:textColor="#ffffff"
-                    android:textSize="10pt"
+                    android:textSize="20dp"
                     android:textStyle="bold"
                     ></Button>
             </LinearLayout>

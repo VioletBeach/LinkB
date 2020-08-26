@@ -5,16 +5,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     >
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        />
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/photoview"
         android:layout_width="match_parent"
         android:paddingBottom="20dp"
         android:background="#7842A0"
-        android:layout_height="250dp"
+        android:layout_height="200dp"
         android:clipChildren="false"
         android:clipToPadding="false" />
 
