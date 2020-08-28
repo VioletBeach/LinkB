@@ -16,7 +16,9 @@
         <activity android:name=".main">
         </activity>
         <activity android:name=".coprateSignup" />
-        <activity android:name=".privateSignUp" />
+        <activity android:name=".privateSignUp"
+            android:windowSoftInputMode="adjustResize"
+            />
         <activity android:name=".login" />
         <activity android:name=".MainActivity">
             <intent-filter>
