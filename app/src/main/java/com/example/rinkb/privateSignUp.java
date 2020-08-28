@@ -115,18 +115,34 @@ public class privateSignUp extends AppCompatActivity {
             }
         });
 
-        btnCheck.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String emailTemp = editEmail.getText().toString();
-                String emailAllow = "^[a-zA-Z0-9_-]+@[a-zA-z0-9.-]+\\.[a-zA-z]+$";
-                if (!emailTemp.matches(emailAllow)) {
-                    Toast.makeText(getApplicationContext(), "허용가능한 이메일 형식이 아닙니다.", Toast.LENGTH_SHORT).show();
-                } else {
-                    new RestAPITaskCheckDuplicate("http://101.101.161.189/api/index.php/linkb_member/check_email_duplicate", emailTemp).execute();
-                }
-            }
-        });
+        editEmail.addTextChangedListener(new TextWatcher() {
+                                             @Override
+                                             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                                                 checkCode=0;
+                                             }
+
+                                             @Override
+                                             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                                             }
+
+                                             @Override
+                                             public void afterTextChanged(Editable s) {
+
+                                             }
+                                         });
+
+                btnCheck.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String emailTemp = editEmail.getText().toString();
+                        String emailAllow = "^[a-zA-Z0-9_-]+@[a-zA-z0-9.-]+\\.[a-zA-z]+$";
+                        if (!emailTemp.matches(emailAllow)) {
+                            Toast.makeText(getApplicationContext(), "허용가능한 이메일 형식이 아닙니다.", Toast.LENGTH_SHORT).show();
+                        } else {
+                            new RestAPITaskCheckDuplicate("http://101.101.161.189/api/index.php/linkb_member/check_email_duplicate", emailTemp).execute();
+                        }
+                    }
+                });
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -275,9 +291,6 @@ public class privateSignUp extends AppCompatActivity {
             } else if (code.equals("200")) {
                 Toast.makeText(getApplicationContext(), "중복체크 성공", Toast.LENGTH_SHORT).show();
                 checkCode = 1;
-                editEmail.setEnabled(false);
-                editEmail.setClickable(false);
-                editEmail.setFocusable(false);
             } else if (code.equals("206")) {
                 Toast.makeText(getApplicationContext(), "API Key가 틀렸습니다.", Toast.LENGTH_SHORT).show();
             } else if (code.equals("500")) {
