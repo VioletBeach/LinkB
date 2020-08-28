@@ -1,4 +1,4 @@
-package com.example.rinkb;
+package com.example.linkb;
 
 public class Main_SampleData {
     private String title;

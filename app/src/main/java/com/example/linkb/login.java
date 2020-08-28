@@ -1,10 +1,9 @@
-package com.example.rinkb;
+package com.example.linkb;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -12,7 +11,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -29,6 +27,7 @@ import java.net.URL;
 public class login extends AppCompatActivity {
 
     EditText editEmail,editPwd;
+    private BackPressHandler backPressHandler = new BackPressHandler(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +50,6 @@ public class login extends AppCompatActivity {
         Toolbar myToolbar = (Toolbar) findViewById(R.id.login_toolbar);
         setSupportActionBar(myToolbar);
         getSupportActionBar().setDisplayShowCustomEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
 
@@ -164,9 +162,9 @@ public class login extends AppCompatActivity {
             if (code.equals("207")) {
                 Toast.makeText(getApplicationContext(), "로그인 실패", Toast.LENGTH_SHORT).show();
             } else if (code.equals("200")) {
-                Toast.makeText(getApplicationContext(), "로그인 성공", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), main.class);
                 startActivity(intent);
+                finish();
 
             } else if (code.equals("206")) {
                 Toast.makeText(getApplicationContext(), "API Key가 틀렸습니다.", Toast.LENGTH_SHORT).show();
@@ -186,4 +184,10 @@ public class login extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+    @Override
+    public void onBackPressed() {
+        // Default
+        backPressHandler.onBackPressed();
+    }
+
 }

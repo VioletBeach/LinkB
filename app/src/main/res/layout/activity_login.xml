@@ -124,6 +124,7 @@
                         android:layout_marginHorizontal="10pt"
                         android:background="@drawable/login_edit"
                         android:hint="이메일 주소를 입력해주세요"
+                        android:singleLine="true"
                         android:id="@+id/edit_login_email">
                     </EditText>
 
@@ -146,6 +147,7 @@
                             android:layout_marginHorizontal="10pt"
                             android:background="@drawable/login_edit"
                             android:hint="비밀번호를 입력해주세요"
+                            android:singleLine="true"
                             android:id="@+id/edit_login_pwd">
                         </EditText>
                     </LinearLayout>

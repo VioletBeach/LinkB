@@ -1,4 +1,4 @@
-package com.example.rinkb;
+package com.example.linkb;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

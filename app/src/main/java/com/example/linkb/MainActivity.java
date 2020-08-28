@@ -1,6 +1,5 @@
-package com.example.rinkb;
+package com.example.linkb;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
@@ -10,8 +9,6 @@ import android.view.View;
 import android.widget.Button;
 
 import com.viewpagerindicator.LinePageIndicator;
-
-import me.relex.circleindicator.CircleIndicator;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),login.class);
                 startActivity(intent);
+                finish();
             }
         });
 

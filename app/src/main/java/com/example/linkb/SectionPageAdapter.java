@@ -1,4 +1,4 @@
-package com.example.rinkb;
+package com.example.linkb;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
