@@ -7,6 +7,8 @@
     android:background="#704591"
     tools:context=".privateSignUp"
     android:orientation="vertical">
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -181,12 +183,15 @@
                 </LinearLayout>
             </FrameLayout>
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/page1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="80.8"
             android:orientation="vertical">
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -202,6 +207,7 @@
                     android:layout_weight="157.3"
                     android:gravity="center">
                     <EditText
+                        android:singleLine="true"
                         android:id="@+id/edit_sigup_email"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -245,6 +251,7 @@
                     android:layout_weight="157.3"
                     android:gravity="center">
                     <EditText
+                        android:singleLine="true"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="비밀번호"
@@ -252,7 +259,9 @@
                         android:textColorHint="#ffffff"
                         android:backgroundTint = "#FFFFFF"
                         android:textColor="#FFFFFF"
-                        android:id="@+id/edit_sigup_pwd" >
+                        android:id="@+id/edit_sigup_pwd"
+                        android:inputType="textPassword"
+                        >
                     </EditText>
                 </LinearLayout>
                 <Space
@@ -276,6 +285,7 @@
                     android:layout_weight="157.4"
                     android:gravity="center">
                     <EditText
+                        android:singleLine="true"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="20"
@@ -284,7 +294,9 @@
                         android:textColor="#FFFFFF"
                         android:textColorHint="#ffffff"
                         android:backgroundTint = "#FFFFFF"
-                        android:id="@+id/edit_sigup_chpwd" >
+                        android:id="@+id/edit_sigup_chpwd"
+                        android:inputType="textPassword"
+                        >
                     </EditText>
 
                     <ImageView
@@ -321,6 +333,7 @@
                     android:layout_weight="157.3"
                     android:gravity="center">
                     <EditText
+                        android:singleLine="true"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="20"
@@ -353,6 +366,7 @@
                     android:layout_weight="157.3"
                     android:gravity="center">
                     <EditText
+                        android:singleLine="true"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="20"
@@ -385,6 +399,7 @@
                     android:layout_weight="157.4"
                     android:gravity="center">
                     <EditText
+                        android:singleLine="true"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="20"
@@ -424,6 +439,7 @@
                     android:layout_weight="157.3"
                     android:gravity="center">
                     <EditText
+                        android:singleLine="true"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="20"
@@ -456,6 +472,7 @@
                     android:layout_weight="157.3"
                     android:gravity="center">
                     <EditText
+                        android:singleLine="true"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="20"
@@ -488,6 +505,7 @@
                     android:layout_weight="157.4"
                     android:gravity="center">
                     <EditText
+                        android:singleLine="true"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="20"
