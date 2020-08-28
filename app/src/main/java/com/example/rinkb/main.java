@@ -11,6 +11,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class main extends AppCompatActivity {
 
+    private BackPressHandler backPressHandler = new BackPressHandler(this);
     // FrameLayout에 각 메뉴의 Fragment를 바꿔 줌
     private FragmentManager fragmentManager = getSupportFragmentManager();
     // 4개의 메뉴에 들어갈 Fragment들
@@ -60,7 +61,10 @@ public class main extends AppCompatActivity {
         //포토뷰
 
     }
-
-
+    @Override
+    public void onBackPressed() {
+        // Default
+        backPressHandler.onBackPressed();
+    }
 }
 
