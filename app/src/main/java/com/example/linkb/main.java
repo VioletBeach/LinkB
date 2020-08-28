@@ -1,4 +1,4 @@
-package com.example.rinkb;
+package com.example.linkb;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;

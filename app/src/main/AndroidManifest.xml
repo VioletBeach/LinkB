@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.rinkb">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.linkb">
 
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -15,15 +16,21 @@
         android:theme="@style/AppTheme">
         <activity android:name=".main">
         </activity>
-        <activity android:name=".coprateSignup" />
-        <activity android:name=".privateSignUp"
-            android:windowSoftInputMode="adjustResize"
+        <activity android:name=".coprateSignup"
+            android:windowSoftInputMode="adjustPan"
+            android:theme="@style/AppTheme.NoActionBar"
             />
-        <activity android:name=".login" />
+        <activity android:name=".privateSignUp"
+            android:windowSoftInputMode="adjustPan"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
+        <activity android:name=".login"
+            android:windowSoftInputMode="adjustPan"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
