@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.util.Log;
@@ -32,6 +33,7 @@ public class PhotoViewAdapter extends RecyclerView.Adapter<PhotoViewAdapter.MyVi
     private Context context;
     private List<String> list;
 
+
     Handler handler1 = new Handler();
     Handler handler2 = new Handler();
     Handler handler3 = new Handler();
@@ -54,6 +56,7 @@ public class PhotoViewAdapter extends RecyclerView.Adapter<PhotoViewAdapter.MyVi
         int index = position % list.size();
         String item = list.get(index);
 
+        /* 보류
         Thread t1 = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -76,6 +79,8 @@ public class PhotoViewAdapter extends RecyclerView.Adapter<PhotoViewAdapter.MyVi
             }
         });
 
+         */
+
         switch(index){
             case 0:
                 holder.imgBanner.setImageResource(R.drawable.cover_20200818);
@@ -95,15 +100,18 @@ public class PhotoViewAdapter extends RecyclerView.Adapter<PhotoViewAdapter.MyVi
 
     @Override
     public int getItemCount() {
-        return Integer.MAX_VALUE;
+        return 500;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         ImageView imgBanner;
-
+        GradientDrawable drawable=
+                (GradientDrawable) context.getDrawable(R.drawable.photoview_rounding);
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             imgBanner = itemView.findViewById(R.id.imgBanner);
+            imgBanner.setBackground(drawable);
+            imgBanner.setClipToOutline(true);
         }
     }
 
