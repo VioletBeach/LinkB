@@ -1,17 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    >
+    android:id="@+id/main_drawer_layout"
+    android:fitsSystemWindows="true"
+    tools:context=".main">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/tooltitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/main_nav_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/colorPrimary"
+                android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="LinkB"
+                    android:textColor="#ffffff"
+                    android:textSize="10pt"
+                    android:textStyle="bold" />
+
+            </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.AppBarLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tooltitle"
+            android:orientation="vertical"
+            android:weightSum="365.5">
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/photoview"
         android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="110"
         android:paddingBottom="20dp"
-        android:background="#7842A0"
-        android:layout_height="200dp"
+        android:background="@color/colorPrimary"
         android:clipChildren="false"
         android:clipToPadding="false" />
+        </LinearLayout>
+    </RelativeLayout>
 
-</LinearLayout>
+
+    <include
+        android:id="@+id/main_nav_view"
+        layout="@layout/main_nav_header"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="start" />
+
+</androidx.drawerlayout.widget.DrawerLayout>
