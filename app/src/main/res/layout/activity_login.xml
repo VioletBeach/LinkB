@@ -152,6 +152,7 @@
                             android:textSize="14dp"
                             android:hint="비밀번호를 입력해주세요"
                             android:singleLine="true"
+                            android:inputType="textPassword"
                             android:id="@+id/edit_login_pwd">
                         </EditText>
                     </LinearLayout>
