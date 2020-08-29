@@ -70,12 +70,13 @@
                     </LinearLayout>
                     <RadioButton
                         android:id="@+id/radioPrivate"
-                        android:layout_width="11pt"
+                        android:layout_width="25dp"
                         android:layout_height="match_parent"
-                        android:paddingLeft="2pt"
+                        android:paddingLeft="4.5dp"
+                        android:paddingRight="3dp"
                         android:button="@null"
                         android:text="개인"
-                        android:textSize="12pt"
+                        android:textSize="24dp"
                         android:textColor="@color/radiobuttonstate"
                         android:background="@drawable/radiobuttonstate"
                         android:layout_weight="16.5"
@@ -87,13 +88,14 @@
                     </LinearLayout>
                     <RadioButton
                         android:id="@+id/radiCcorporate"
-                        android:layout_width="11pt"
+                        android:layout_width="25dp"
                         android:layout_height="match_parent"
-                        android:paddingLeft="2pt"
+                        android:paddingLeft="4.5dp"
+                        android:paddingRight="3dp"
                         android:text="기업"
                         android:button="@null"
                         android:background="@drawable/radiobuttonstate"
-                        android:textSize="12pt"
+                        android:textSize="24dp"
                         android:textColor="@color/radiobuttonstate"
                         android:layout_weight="16.5"/>
                     <LinearLayout
@@ -118,11 +120,12 @@
                         android:layout_weight="15"></LinearLayout>
                     <EditText
                         android:layout_width="wrap_content"
-                        android:layout_height="23pt"
+                        android:layout_height="40dp"
                         android:layout_weight="157.5"
-                        android:layout_marginBottom="5pt"
-                        android:layout_marginHorizontal="10pt"
+                        android:layout_marginBottom="12dp"
+                        android:layout_marginHorizontal="20dp"
                         android:background="@drawable/login_edit"
+                        android:textSize="14dp"
                         android:hint="이메일 주소를 입력해주세요"
                         android:singleLine="true"
                         android:id="@+id/edit_login_email">
@@ -143,9 +146,10 @@
                         android:layout_weight="157.5">
                         <EditText
                             android:layout_width="match_parent"
-                            android:layout_height="23pt"
-                            android:layout_marginHorizontal="10pt"
+                            android:layout_height="40dp"
+                            android:layout_marginHorizontal="20dp"
                             android:background="@drawable/login_edit"
+                            android:textSize="14dp"
                             android:hint="비밀번호를 입력해주세요"
                             android:singleLine="true"
                             android:id="@+id/edit_login_pwd">
@@ -168,10 +172,10 @@
                     android:id="@+id/btnLogin"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="로그인"
+                    android:text="시작하기"
                     android:background="#00000000"
                     android:textColor="#ffffff"
-                    android:textSize="12pt"
+                    android:textSize="20dp"
                     android:textStyle="bold"></Button>
             </LinearLayout>
             <LinearLayout
@@ -184,9 +188,9 @@
                 android:gravity="center"
                 android:layout_weight="25">
                 <ImageButton
-                    android:layout_width="30pt"
-                    android:layout_height="30pt"
-                    android:layout_marginHorizontal="3pt"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginHorizontal="6dp"
                     android:background="#00000000"
                     android:padding="0dp"
                     android:src="@drawable/icon_naver"
@@ -194,9 +198,9 @@
                     android:scaleType="fitXY"
                     />
                 <ImageButton
-                    android:layout_width="30pt"
-                    android:layout_height="30pt"
-                    android:layout_marginHorizontal="3pt"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginHorizontal="6dp"
                     android:background="#00000000"
                     android:padding="0dp"
                     android:src="@drawable/icon_kakao"
@@ -223,7 +227,7 @@
                     android:text="회원가입"
                     android:background="#00000000"
                     android:textColor="#ffffff"
-                    android:textSize="9.5pt"
+                    android:textSize="16dp"
                     android:textStyle="bold"
                     android:layout_weight="24"></Button>
                 <LinearLayout
@@ -236,7 +240,7 @@
                     android:text="비밀번호찾기"
                     android:background="#00000000"
                     android:textColor="#ffffff"
-                    android:textSize="9.5pt"
+                    android:textSize="16dp"
                     android:textStyle="bold"
                     android:layout_weight="36"></Button>
                 <LinearLayout
