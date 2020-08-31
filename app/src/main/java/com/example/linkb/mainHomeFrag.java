@@ -21,8 +21,12 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.viewpagerindicator.LinePageIndicator;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import me.relex.circleindicator.CircleIndicator3;
 
 
 public class mainHomeFrag extends Fragment { ;
@@ -30,6 +34,7 @@ public class mainHomeFrag extends Fragment { ;
     View drawerView;
     ImageButton close_drawer;
     ListView main_list;
+    CircleIndicator3 indicator;
 
     ArrayList<Main_SampleData> titleDataList;
 
@@ -43,6 +48,7 @@ public class mainHomeFrag extends Fragment { ;
         close_drawer = view.findViewById(R.id.btn_CloseDrawer);
         main_list = view.findViewById(R.id.main_nav_list);
         Toolbar toolbar = (Toolbar) view.findViewById(R.id.main_nav_toolbar);
+        indicator=view.findViewById(R.id.photoview_indicator);
 
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -69,6 +75,7 @@ public class mainHomeFrag extends Fragment { ;
                 maindrawer.closeDrawer(drawerView);
             }
         });
+
 
 
         // 보류 // new RestAPITaskCover("http://101.101.161.189/api/index.php/linkb_cover/select_cover_list").execute();
@@ -104,7 +111,9 @@ public class mainHomeFrag extends Fragment { ;
         });
 
         //포토뷰 끝
-
+        indicator.setViewPager(photoview);
+        indicator.createIndicators(5,0);
+        indicator.animatePageSelected(2);
         setHasOptionsMenu(true);
         return view;
     }
@@ -182,11 +191,13 @@ public class mainHomeFrag extends Fragment { ;
         return super.onOptionsItemSelected(item);
     }
 
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         getActivity().getMenuInflater().inflate(R.menu.icon_refresh, menu);
         super.onCreateOptionsMenu(menu,inflater);
     }
+
 
     @Override
     public void onResume() {
