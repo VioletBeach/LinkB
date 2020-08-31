@@ -107,18 +107,20 @@
                                                 android:layout_width="0dp"
                                                 android:layout_height="20dp"
                                                 android:layout_weight="1"
-                                                android:button="@drawable/radio_button_search_frag"
+                                                android:background="@drawable/radio_button_search_frag"
                                                 android:checked="true"
                                                 android:gravity="center"
-                                                android:text="추천행사" />
+                                                android:text="추천행사"
+                                                android:button="@null"
+                                                />
 
                                             <RadioButton
                                                 android:id="@+id/eventRadioBtn2"
                                                 android:layout_width="0dp"
                                                 android:layout_height="20dp"
                                                 android:layout_weight="1"
-                                                android:button="@drawable/radio_button_search_frag"
-
+                                                android:background="@drawable/radio_button_search_frag"
+                                                android:button="@null"
                                                 android:gravity="center"
                                                 android:text="최근 검색어" />
 
