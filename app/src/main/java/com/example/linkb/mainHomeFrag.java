@@ -1,5 +1,6 @@
 package com.example.linkb;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -173,7 +174,10 @@ public class mainHomeFrag extends Fragment { ;
                 return true;
             }
             case R.id.action_refresh:
-                Toast.makeText(getActivity().getApplicationContext(),"새로 고침 모듈", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity().getApplicationContext(),"로그아웃 (비상 탈출)", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity().getApplicationContext(), login.class);
+                startActivity(intent);
+                getActivity().finish();
         }
         return super.onOptionsItemSelected(item);
     }
