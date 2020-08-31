@@ -162,6 +162,8 @@ public class login extends AppCompatActivity {
             if (code.equals("207")) {
                 Toast.makeText(getApplicationContext(), "로그인 실패", Toast.LENGTH_SHORT).show();
             } else if (code.equals("200")) {
+                SharedPreference.setAttribute(getApplicationContext(), "userId", id);
+                SharedPreference.setAttribute(getApplicationContext(), "userPwd", pwd);
                 Intent intent = new Intent(getApplicationContext(), main.class);
                 startActivity(intent);
                 finish();
