@@ -17,15 +17,15 @@
         <activity android:name=".main">
         </activity>
         <activity android:name=".coprateSignup"
-            android:windowSoftInputMode="adjustPan"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:theme="@style/Theme.Design.NoActionBar"
             />
         <activity android:name=".privateSignUp"
-            android:windowSoftInputMode="adjustPan"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:theme="@style/Theme.Design.NoActionBar"
             />
         <activity android:name=".login"
-            android:windowSoftInputMode="adjustPan"
+            android:windowSoftInputMode="adjustResize|stateHidden"
             android:theme="@style/AppTheme.NoActionBar"
             />
         <activity android:name=".MainActivity">

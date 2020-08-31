@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.DisplayMetrics;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -39,6 +40,7 @@ public class privateSignUp extends AppCompatActivity {
     Button btnSignUp;
     IndicatorSeekBar mSeekBar;
     TextView seekbar_first, seekbar_second, seekbar_third;
+    LinearLayout signup_frag;
 
 
     @Override
@@ -56,6 +58,7 @@ public class privateSignUp extends AppCompatActivity {
         page2 = (LinearLayout) findViewById(R.id.page2);
         page3 = (LinearLayout) findViewById(R.id.page3);
         mSeekBar = findViewById(R.id.seekbar);
+        signup_frag=findViewById(R.id.signup_frag);
         final Button btnCheck = (Button) findViewById(R.id.btn_dup_check);
         final EditText editPwd = (EditText) findViewById(R.id.edit_sigup_pwd);
         final EditText editChPwd = (EditText) findViewById(R.id.edit_sigup_chpwd);
@@ -69,7 +72,10 @@ public class privateSignUp extends AppCompatActivity {
 
         seekbar_second.setVisibility(View.INVISIBLE);
         seekbar_third.setVisibility(View.INVISIBLE);
+        DisplayMetrics displayMetrics = new DisplayMetrics(); getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
 
+        signup_frag.setLayoutParams(new LinearLayout.LayoutParams
+                (displayMetrics.widthPixels,(displayMetrics.heightPixels*80)/100));
 
         editEmail.setPadding(40, 0, 0, 50);
         editPwd.setPadding(40, 0, 0, 50);
