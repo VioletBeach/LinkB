@@ -21,7 +21,11 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
+import com.hellmund.viewpager2indicator.ViewPager2Indicator;
 import com.viewpagerindicator.LinePageIndicator;
+import com.warkiz.widget.Indicator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +38,7 @@ public class mainHomeFrag extends Fragment { ;
     View drawerView;
     ImageButton close_drawer;
     ListView main_list;
+    ViewPager2 photoview;
     CircleIndicator3 indicator;
 
     ArrayList<Main_SampleData> titleDataList;
@@ -43,13 +48,13 @@ public class mainHomeFrag extends Fragment { ;
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_logined_main_frag1, container, false);
 
+        photoview=view.findViewById(R.id.photoview);
         maindrawer = view.findViewById(R.id.main_drawer_layout);
         drawerView = view.findViewById(R.id.main_nav_view);
         close_drawer = view.findViewById(R.id.btn_CloseDrawer);
         main_list = view.findViewById(R.id.main_nav_list);
         Toolbar toolbar = (Toolbar) view.findViewById(R.id.main_nav_toolbar);
         indicator=view.findViewById(R.id.photoview_indicator);
-
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -84,8 +89,7 @@ public class mainHomeFrag extends Fragment { ;
         items.add("items2");
         items.add("items3");
         items.add("items4");
-        PhotoViewAdapter adapter=new PhotoViewAdapter(getActivity().getApplicationContext(),items);
-        ViewPager2 photoview=view.findViewById(R.id.photoview);
+        final PhotoViewAdapter adapter=new PhotoViewAdapter(getActivity().getApplicationContext(),items);
         photoview.setAdapter(adapter);
         photoview.setOrientation(ViewPager2.ORIENTATION_HORIZONTAL);
         photoview.setOffscreenPageLimit(4);
@@ -110,10 +114,30 @@ public class mainHomeFrag extends Fragment { ;
             }
         });
 
+
+
         //포토뷰 끝
         indicator.setViewPager(photoview);
         indicator.createIndicators(5,0);
-        indicator.animatePageSelected(2);
+
+        photoview.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+                                                   @Override
+                                                   public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                                                       super.onPageScrolled(position, positionOffset, positionOffsetPixels);
+                                                       if (positionOffsetPixels == 0) {
+                                                           photoview.setCurrentItem(position);
+                                                       }
+                                                   }
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                indicator.animatePageSelected(position%5);
+            }
+
+        });
+
+
+
         setHasOptionsMenu(true);
         return view;
     }
@@ -174,6 +198,8 @@ public class mainHomeFrag extends Fragment { ;
     }
 
      */
+
+
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
