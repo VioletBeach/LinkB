@@ -4,13 +4,9 @@
     <item>
         <shape
             android:shape="rectangle"
-            android:useLevel="false"
-            android:thickness="40dp">
+            android:useLevel="false">
 
             <solid android:color="#FFFFFF"/>
-            <size
-                android:width="10dp"
-                android:height="15dp" />
         </shape>
     </item>
 </layer-list>
