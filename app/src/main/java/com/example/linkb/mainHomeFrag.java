@@ -22,14 +22,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.SimpleItemAnimator;
 import androidx.viewpager2.widget.ViewPager2;
-
-import com.google.android.material.tabs.TabLayout;
-import com.google.android.material.tabs.TabLayoutMediator;
-import com.hellmund.viewpager2indicator.ViewPager2Indicator;
-import com.viewpagerindicator.LinePageIndicator;
-import com.warkiz.widget.Indicator;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,8 +61,6 @@ public class mainHomeFrag extends Fragment { ;
 
         //추천 이벤트
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
-        recyclerView.setLayoutManager(linearLayoutManager);
 
         //프래그를 누를때마다 계속 아이템이 추가되어 구현
         if(recycle_isFirst) {
@@ -77,12 +69,22 @@ public class mainHomeFrag extends Fragment { ;
             addItem(R.drawable.test_sky, "3번 행사의 행사명", "2020.00.00 ~ 2020.00.00");
             addItem(R.drawable.test_green, "4번 행사의 행사명", "2020.00.00 ~ 2020.00.00");
             addItem(R.drawable.test_red, "5번 행사의 행사명", "2020.00.00 ~ 2020.00.00");
+            EventAdapter eventAdapter = new EventAdapter(mList);
+            recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
+            recyclerView.setHasFixedSize(true);
+            recyclerView.setItemViewCacheSize(20);
+            recyclerView.setDrawingCacheEnabled(true);
+            recyclerView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
+            RecyclerView.ItemAnimator animator = recyclerView.getItemAnimator();
+            if (animator instanceof SimpleItemAnimator) {
+                ((SimpleItemAnimator) animator).setSupportsChangeAnimations(false);
+            }
+            recyclerView.setAdapter(eventAdapter);
             recycle_isFirst=false;
         }
 
-        EventAdapter eventAdapter = new EventAdapter(mList);
-        recyclerView.setAdapter(eventAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
+
+
         //
         this.InitializeListData();
         final Main_list_Adapter myAdapter = new Main_list_Adapter(getActivity(), titleDataList);
@@ -123,6 +125,8 @@ public class mainHomeFrag extends Fragment { ;
         }
         final float pageMargin=getResources().getDimensionPixelOffset(R.dimen.pageMargin);
         final float pageOffset=getResources().getDimensionPixelOffset(R.dimen.offset);
+        indicator.setViewPager(photoview);
+        indicator.createIndicators(5,0);
         photoview.setPageTransformer(new ViewPager2.PageTransformer() {
             @Override
             public void transformPage(@NonNull View page, float position) {
@@ -144,27 +148,15 @@ public class mainHomeFrag extends Fragment { ;
 
 
         //포토뷰 끝
-        indicator.setViewPager(photoview);
-        indicator.createIndicators(5,0);
+
 
         photoview.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
-                                                   @Override
-                                                   public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                                                       super.onPageScrolled(position, positionOffset, positionOffsetPixels);
-                                                       if (positionOffsetPixels == 0) {
-                                                           photoview.setCurrentItem(position);
-                                                       }
-                                                   }
+
             @Override
             public void onPageSelected(int position) {
-                super.onPageSelected(position);
                 indicator.animatePageSelected(position%5);
             }
-
         });
-
-
-
         setHasOptionsMenu(true);
         return view;
     }
