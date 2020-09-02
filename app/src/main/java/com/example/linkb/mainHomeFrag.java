@@ -40,7 +40,7 @@ public class mainHomeFrag extends Fragment { ;
     ListView main_list;
     ViewPager2 photoview;
     CircleIndicator3 indicator;
-
+    boolean isFirst=true;
     ArrayList<Main_SampleData> titleDataList;
 
     @Nullable
@@ -93,7 +93,10 @@ public class mainHomeFrag extends Fragment { ;
         photoview.setAdapter(adapter);
         photoview.setOrientation(ViewPager2.ORIENTATION_HORIZONTAL);
         photoview.setOffscreenPageLimit(4);
-        photoview.setCurrentItem(adapter.getItemCount()/2); // 아이템 개수의 중간지점에서 시작
+        if(isFirst==true) {
+            photoview.setCurrentItem(adapter.getItemCount()/2); // 아이템 개수의 중간지점에서 시작
+            isFirst=false;
+        }
         final float pageMargin=getResources().getDimensionPixelOffset(R.dimen.pageMargin);
         final float pageOffset=getResources().getDimensionPixelOffset(R.dimen.offset);
         photoview.setPageTransformer(new ViewPager2.PageTransformer() {
