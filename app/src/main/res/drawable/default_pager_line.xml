@@ -4,7 +4,8 @@
     <item>
         <shape
             android:shape="rectangle"
-            android:useLevel="false">
+            android:useLevel="false"
+            android:thickness="40dp">
             <solid android:color="#4dEBEBEB"/>
             <size
                 android:width="30dp"
