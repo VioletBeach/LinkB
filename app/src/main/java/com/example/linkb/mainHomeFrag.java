@@ -43,7 +43,8 @@ public class mainHomeFrag extends Fragment { ;
     ListView main_list;
     ViewPager2 photoview;
     CircleIndicator3 indicator;
-    boolean isFirst=true;
+    boolean photo_isFirst=true;
+    boolean recycle_isFirst=true;
     ArrayList<Main_SampleData> titleDataList;
     ArrayList<RecommendEventItem> mList = new ArrayList<RecommendEventItem>();
 
@@ -68,11 +69,17 @@ public class mainHomeFrag extends Fragment { ;
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         recyclerView.setLayoutManager(linearLayoutManager);
-        addItem(R.drawable.test_pink,"2020 부산 YOLO 라이프","2020.00.00 ~ 2020.00.00");
-        addItem(R.drawable.test_yellow,"2020 퍼스널 모빌리티쇼","2020.00.00 ~ 2020.00.00");
-        addItem(R.drawable.test_sky,"3번 행사의 행사명","2020.00.00 ~ 2020.00.00");
-        addItem(R.drawable.test_green,"4번 행사의 행사명","2020.00.00 ~ 2020.00.00");
-        addItem(R.drawable.test_red,"5번 행사의 행사명","2020.00.00 ~ 2020.00.00");
+
+        //프래그를 누를때마다 계속 아이템이 추가되어 구현
+        if(recycle_isFirst) {
+            addItem(R.drawable.test_pink, "2020 부산 YOLO 라이프", "2020.00.00 ~ 2020.00.00");
+            addItem(R.drawable.test_yellow, "2020 퍼스널 모빌리티쇼", "2020.00.00 ~ 2020.00.00");
+            addItem(R.drawable.test_sky, "3번 행사의 행사명", "2020.00.00 ~ 2020.00.00");
+            addItem(R.drawable.test_green, "4번 행사의 행사명", "2020.00.00 ~ 2020.00.00");
+            addItem(R.drawable.test_red, "5번 행사의 행사명", "2020.00.00 ~ 2020.00.00");
+            recycle_isFirst=false;
+        }
+
         EventAdapter eventAdapter = new EventAdapter(mList);
         recyclerView.setAdapter(eventAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
@@ -110,9 +117,9 @@ public class mainHomeFrag extends Fragment { ;
         photoview.setAdapter(adapter);
         photoview.setOrientation(ViewPager2.ORIENTATION_HORIZONTAL);
         photoview.setOffscreenPageLimit(4);
-        if(isFirst==true) {
+        if(photo_isFirst==true) {
             photoview.setCurrentItem(adapter.getItemCount()/2); // 아이템 개수의 중간지점에서 시작
-            isFirst=false;
+            photo_isFirst=false;
         }
         final float pageMargin=getResources().getDimensionPixelOffset(R.dimen.pageMargin);
         final float pageOffset=getResources().getDimensionPixelOffset(R.dimen.offset);
