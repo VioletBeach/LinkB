@@ -1,6 +1,7 @@
 package com.example.linkb;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -19,6 +20,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.tabs.TabLayout;
@@ -42,6 +45,7 @@ public class mainHomeFrag extends Fragment { ;
     CircleIndicator3 indicator;
     boolean isFirst=true;
     ArrayList<Main_SampleData> titleDataList;
+    ArrayList<RecommendEventItem> mList = new ArrayList<RecommendEventItem>();
 
     @Nullable
     @Override
@@ -60,6 +64,19 @@ public class mainHomeFrag extends Fragment { ;
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_menu_24);
 
+        //추천 이벤트
+        RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
+        recyclerView.setLayoutManager(linearLayoutManager);
+        addItem(R.drawable.test_pink,"2020 부산 YOLO 라이프","2020.00.00 ~ 2020.00.00");
+        addItem(R.drawable.test_yellow,"2020 퍼스널 모빌리티쇼","2020.00.00 ~ 2020.00.00");
+        addItem(R.drawable.test_sky,"3번 행사의 행사명","2020.00.00 ~ 2020.00.00");
+        addItem(R.drawable.test_green,"4번 행사의 행사명","2020.00.00 ~ 2020.00.00");
+        addItem(R.drawable.test_red,"5번 행사의 행사명","2020.00.00 ~ 2020.00.00");
+        EventAdapter eventAdapter = new EventAdapter(mList);
+        recyclerView.setAdapter(eventAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
+        //
         this.InitializeListData();
         final Main_list_Adapter myAdapter = new Main_list_Adapter(getActivity(), titleDataList);
         main_list.setAdapter(myAdapter);
@@ -241,4 +258,14 @@ public class mainHomeFrag extends Fragment { ;
         titleDataList.add(new Main_SampleData("행사참여하기", "행사등록 및 참여확인"));
 
     }
+    public void addItem(int img, String title, String day) {
+        RecommendEventItem item = new RecommendEventItem();
+
+        item.setDay(day);
+        item.setTitle(title);
+        item.setImageResource(img);
+        mList.add(item);
+    }
+
+
 }
