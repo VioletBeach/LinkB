@@ -84,7 +84,7 @@ public class PhotoViewAdapter extends RecyclerView.Adapter<PhotoViewAdapter.MyVi
 
     @Override
     public int getItemCount() {
-        return 500;
+        return 30;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
