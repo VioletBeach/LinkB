@@ -5,10 +5,8 @@
         <shape
             android:shape="rectangle"
             android:useLevel="false">
+
             <solid android:color="#FFFFFF"/>
-            <size
-                android:width="30dp"
-                android:height="10dp" />
         </shape>
     </item>
 </layer-list>

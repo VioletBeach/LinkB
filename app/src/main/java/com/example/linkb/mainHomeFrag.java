@@ -1,6 +1,7 @@
 package com.example.linkb;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -19,10 +20,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.SimpleItemAnimator;
 import androidx.viewpager2.widget.ViewPager2;
-
-import com.viewpagerindicator.LinePageIndicator;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,27 +35,57 @@ public class mainHomeFrag extends Fragment { ;
     View drawerView;
     ImageButton close_drawer;
     ListView main_list;
+    ViewPager2 photoview;
     CircleIndicator3 indicator;
-
+    boolean photo_isFirst=true;
+    boolean recycle_isFirst=true;
     ArrayList<Main_SampleData> titleDataList;
+    ArrayList<RecommendEventItem> mList = new ArrayList<RecommendEventItem>();
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_logined_main_frag1, container, false);
 
+        photoview=view.findViewById(R.id.photoview);
         maindrawer = view.findViewById(R.id.main_drawer_layout);
         drawerView = view.findViewById(R.id.main_nav_view);
         close_drawer = view.findViewById(R.id.btn_CloseDrawer);
         main_list = view.findViewById(R.id.main_nav_list);
         Toolbar toolbar = (Toolbar) view.findViewById(R.id.main_nav_toolbar);
         indicator=view.findViewById(R.id.photoview_indicator);
-
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_menu_24);
 
+        //추천 이벤트
+        RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
+
+        //프래그를 누를때마다 계속 아이템이 추가되어 구현
+        if(recycle_isFirst) {
+            addItem(R.drawable.test_pink, "2020 부산 YOLO 라이프", "2020.00.00 ~ 2020.00.00");
+            addItem(R.drawable.test_yellow, "2020 퍼스널 모빌리티쇼", "2020.00.00 ~ 2020.00.00");
+            addItem(R.drawable.test_sky, "3번 행사의 행사명", "2020.00.00 ~ 2020.00.00");
+            addItem(R.drawable.test_green, "4번 행사의 행사명", "2020.00.00 ~ 2020.00.00");
+            addItem(R.drawable.test_red, "5번 행사의 행사명", "2020.00.00 ~ 2020.00.00");
+            EventAdapter eventAdapter = new EventAdapter(mList);
+            recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
+            recyclerView.setHasFixedSize(true);
+            recyclerView.setItemViewCacheSize(20);
+            recyclerView.setDrawingCacheEnabled(true);
+            recyclerView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
+            RecyclerView.ItemAnimator animator = recyclerView.getItemAnimator();
+            if (animator instanceof SimpleItemAnimator) {
+                ((SimpleItemAnimator) animator).setSupportsChangeAnimations(false);
+            }
+            recyclerView.setAdapter(eventAdapter);
+            recycle_isFirst=false;
+        }
+
+
+
+        //
         this.InitializeListData();
         final Main_list_Adapter myAdapter = new Main_list_Adapter(getActivity(), titleDataList);
         main_list.setAdapter(myAdapter);
@@ -84,14 +115,18 @@ public class mainHomeFrag extends Fragment { ;
         items.add("items2");
         items.add("items3");
         items.add("items4");
-        PhotoViewAdapter adapter=new PhotoViewAdapter(getActivity().getApplicationContext(),items);
-        ViewPager2 photoview=view.findViewById(R.id.photoview);
+        final PhotoViewAdapter adapter=new PhotoViewAdapter(getActivity().getApplicationContext(),items);
         photoview.setAdapter(adapter);
         photoview.setOrientation(ViewPager2.ORIENTATION_HORIZONTAL);
         photoview.setOffscreenPageLimit(4);
-        photoview.setCurrentItem(adapter.getItemCount()/2); // 아이템 개수의 중간지점에서 시작
+        if(photo_isFirst==true) {
+            photoview.setCurrentItem(adapter.getItemCount()/2); // 아이템 개수의 중간지점에서 시작
+            photo_isFirst=false;
+        }
         final float pageMargin=getResources().getDimensionPixelOffset(R.dimen.pageMargin);
         final float pageOffset=getResources().getDimensionPixelOffset(R.dimen.offset);
+        indicator.setViewPager(photoview);
+        indicator.createIndicators(5,0);
         photoview.setPageTransformer(new ViewPager2.PageTransformer() {
             @Override
             public void transformPage(@NonNull View page, float position) {
@@ -110,10 +145,18 @@ public class mainHomeFrag extends Fragment { ;
             }
         });
 
+
+
         //포토뷰 끝
-        indicator.setViewPager(photoview);
-        indicator.createIndicators(5,0);
-        indicator.animatePageSelected(2);
+
+
+        photoview.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+
+            @Override
+            public void onPageSelected(int position) {
+                indicator.animatePageSelected(position%5);
+            }
+        });
         setHasOptionsMenu(true);
         return view;
     }
@@ -175,6 +218,8 @@ public class mainHomeFrag extends Fragment { ;
 
      */
 
+
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
@@ -212,4 +257,14 @@ public class mainHomeFrag extends Fragment { ;
         titleDataList.add(new Main_SampleData("행사참여하기", "행사등록 및 참여확인"));
 
     }
+    public void addItem(int img, String title, String day) {
+        RecommendEventItem item = new RecommendEventItem();
+
+        item.setDay(day);
+        item.setTitle(title);
+        item.setImageResource(img);
+        mList.add(item);
+    }
+
+
 }
