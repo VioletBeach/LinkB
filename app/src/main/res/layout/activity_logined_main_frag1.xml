@@ -82,7 +82,7 @@
                         android:layout_marginBottom="7dp"
                         android:text="# 당신에게 꼭 맞는 추천행사!"
                         android:textColor="#000000"
-                        android:textSize="14dp"
+                        android:textSize="17.778dp"
                         android:textStyle="bold" />
 
                     <androidx.recyclerview.widget.RecyclerView
@@ -99,7 +99,7 @@
                         android:layout_marginBottom="7dp"
                         android:text="# 다양한 행사를 확인하세요"
                         android:textColor="#000000"
-                        android:textSize="14dp"
+                        android:textSize="17.778dp"
                         android:textStyle="bold" />
 
                     <LinearLayout

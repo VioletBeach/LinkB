@@ -359,7 +359,7 @@ public class mainHomeFrag extends Fragment {
             System.out.println(title[title.length-1]);
 
             for(int i =0; i <title.length; i++){
-                addItem(img[i], title[i], startday[i]+"~"+endday[i]);
+                addItem(img[i], title[i], startday[i].substring(0, startday[i].indexOf(" "))+"~"+endday[i].substring(0, endday[i].indexOf(" ")));
                 System.out.println(img[i]);
             }
 
