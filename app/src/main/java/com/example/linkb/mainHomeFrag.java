@@ -258,7 +258,7 @@ public class mainHomeFrag extends Fragment {
 
     }
 
-    public void addItem(int img, String title, String day) {
+    public void addItem(String img, String title, String day) {
         RecommendEventItem item = new RecommendEventItem();
 
         item.setDay(day);
@@ -309,11 +309,23 @@ public class mainHomeFrag extends Fragment {
                 String[] event_start_date = new String[parseArray.length()];
                 String[] event_end_date = new String[parseArray.length()];
                 String[] event_location = new String[parseArray.length()];
+                String[] event_img = new String[parseArray.length()];
 
 
                 for(int i =0; i < parseArray.length(); i++){
                     JSONObject contentObject = (JSONObject)parseArray.get(i);
 
+                    System.out.println(contentObject.get("event_idx"));
+                    System.out.println(contentObject.get("event_name"));
+                    System.out.println(contentObject.get("event_host"));
+                    System.out.println(contentObject.get("event_start_date"));
+                    System.out.println(contentObject.get("event_end_date"));
+                    System.out.println(contentObject.get("event_location"));
+                    System.out.println(contentObject.get("event_use"));
+                    System.out.println(contentObject.get("event_sort"));
+
+
+                    event_img[i] = contentObject.get("event_image").toString();
                     event_name[i] = contentObject.get("event_name").toString();
                     event_host[i] = contentObject.get("event_host").toString();
                     event_start_date[i] = contentObject.get("event_start_date").toString();
@@ -326,6 +338,7 @@ public class mainHomeFrag extends Fragment {
                 stringHashMap.put("event_start_date", event_start_date);
                 stringHashMap.put("event_end_date", event_end_date);
                 stringHashMap.put("event_location", event_location);
+                stringHashMap.put("event_img", event_img);
 
                 return stringHashMap;
 
@@ -341,11 +354,13 @@ public class mainHomeFrag extends Fragment {
             String[] title = s.get("event_name");
             String[] startday = s.get("event_start_date");
             String[] endday = s.get("event_end_date");
+            String[] img = s.get("event_img");
 
             System.out.println(title[title.length-1]);
 
             for(int i =0; i <title.length; i++){
-                addItem(R.drawable.test_pink, title[i], startday[i]+"~"+endday[i]);
+                addItem(img[i], title[i], startday[i]+"~"+endday[i]);
+                System.out.println(img[i]);
             }
 
             EventAdapter eventAdapter = new EventAdapter(mList);

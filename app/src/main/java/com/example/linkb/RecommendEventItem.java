@@ -1,9 +1,10 @@
 package com.example.linkb;
 
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 
 public class RecommendEventItem {
-    private int imageResource;
+    private String imageResource;
     private String title;
     private String day;
 
@@ -11,15 +12,15 @@ public class RecommendEventItem {
     public RecommendEventItem() {
     }
 
-    public RecommendEventItem(int imageResource, String title, String day) {
+    public RecommendEventItem(String imageResource, String title, String day) {
         this.imageResource = imageResource;
         this.title = title;
         this.day = day;
     }
-    public int getImageResource() {
+    public String getImageResource() {
         return imageResource;
     }
-    public void setImageResource(int imageResource) {
+    public void setImageResource(String imageResource) {
         this.imageResource = imageResource;
     }
     public String getTitle() {
