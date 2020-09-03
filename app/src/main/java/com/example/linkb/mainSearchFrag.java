@@ -21,8 +21,7 @@ public class mainSearchFrag extends Fragment {
         Toolbar toolbar = (Toolbar) view.findViewById(R.id.main_nav_toolbar2);
 
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
+
 
 
         return view;
