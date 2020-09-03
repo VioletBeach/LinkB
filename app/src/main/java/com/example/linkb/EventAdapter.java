@@ -3,6 +3,8 @@ package com.example.linkb;
 import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.GradientDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -24,10 +26,13 @@ import com.viewpagerindicator.LinePageIndicator;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
@@ -80,7 +85,32 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ItemViewHold
         void onBind(RecommendEventItem data) {
             textView1.setText(data.getTitle());
             textView2.setText(data.getDay());
-            imageView.setImageResource(data.getImageResource());
+
+            new FilesTask().execute(data.getImageResource());
+
+        }
+
+        private class FilesTask extends AsyncTask<String, Void, Bitmap>{
+
+            @Override
+            protected void onPostExecute(Bitmap bitmap) {
+                imageView.setImageBitmap(bitmap);
+            }
+
+            @Override
+            protected Bitmap doInBackground(String... strings) {
+                Bitmap bmp = null;
+                try {
+                    String img_url = strings[0]; //url of the image
+                    URL url = new URL(img_url);
+                    bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                return bmp;
+            }
         }
     }
 
@@ -91,5 +121,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ItemViewHold
     public void setListData(ArrayList<RecommendEventItem> listData) {
         this.listData = listData;
     }
+
+
 
 }
