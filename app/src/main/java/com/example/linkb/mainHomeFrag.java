@@ -1,7 +1,6 @@
 package com.example.linkb;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -30,12 +29,11 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import me.relex.circleindicator.CircleIndicator3;
@@ -50,6 +48,7 @@ public class mainHomeFrag extends Fragment {
     ViewPager2 photoview;
     CircleIndicator3 indicator;
     boolean photo_isFirst = true;
+
 
     ArrayList<Main_SampleData> titleDataList;
     ArrayList<RecommendEventItem> mList = new ArrayList<RecommendEventItem>();
@@ -81,23 +80,11 @@ public class mainHomeFrag extends Fragment {
         //프래그를 누를때마다 계속 아이템이 추가되어 구현
 
 
-        new RestAPITaskRecommend("http://101.101.161.189/api/index.php/linkb_event/select_recommend_event_list").execute();
-        addItem(R.drawable.test_pink, "2020 부산 YOLO 라이프", "2020.00.00 ~ 2020.00.00");
-        addItem(R.drawable.test_yellow, "2020 퍼스널 모빌리티쇼", "2020.00.00 ~ 2020.00.00");
-        addItem(R.drawable.test_sky, "3번 행사의 행사명", "2020.00.00 ~ 2020.00.00");
-        addItem(R.drawable.test_green, "4번 행사의 행사명", "2020.00.00 ~ 2020.00.00");
-        addItem(R.drawable.test_red, "5번 행사의 행사명", "2020.00.00 ~ 2020.00.00");
-        EventAdapter eventAdapter = new EventAdapter(mList);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setItemViewCacheSize(20);
-        recyclerView.setDrawingCacheEnabled(true);
-        recyclerView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
-        RecyclerView.ItemAnimator animator = recyclerView.getItemAnimator();
-        if (animator instanceof SimpleItemAnimator) {
-            ((SimpleItemAnimator) animator).setSupportsChangeAnimations(false);
-        }
-        recyclerView.setAdapter(eventAdapter);
+        mList.clear();
+        new RestAPITaskRecommend("http://101.101.161.189/api/index.php/linkb_event/select_recommend_event_list", recyclerView).execute();
+
+
+
 
 
 
@@ -281,17 +268,19 @@ public class mainHomeFrag extends Fragment {
     }
 
 
-    public class RestAPITaskRecommend extends AsyncTask<Integer, Void, String>{
+    public class RestAPITaskRecommend extends AsyncTask<Integer, Void, HashMap<String, String[]>> {
 
         protected String mURL;
+        RecyclerView recyclerView;
 
-        public RestAPITaskRecommend(String mURL){
+        public RestAPITaskRecommend(String mURL, RecyclerView recyclerView){
             this.mURL = mURL;
+            this.recyclerView = recyclerView;
         }
 
 
         @Override
-        protected String doInBackground(Integer... params) {
+        protected HashMap<String, String[]> doInBackground(Integer... params) {
             try{
                 URL url = new URL(mURL);
                 HttpURLConnection conn = (HttpURLConnection)url.openConnection();
@@ -310,25 +299,35 @@ public class mainHomeFrag extends Fragment {
                     builder.append(str+ "\n");
                 }
                 String result = builder.toString();
-                System.out.println(result);
 
                 JSONObject jsonObject = new JSONObject(result);
 
                 JSONArray parseArray = (JSONArray)jsonObject.get("event_list");
-                System.out.println(parseArray.toString());
+
+                String[] event_name = new String[parseArray.length()];
+                String[] event_host = new String[parseArray.length()];
+                String[] event_start_date = new String[parseArray.length()];
+                String[] event_end_date = new String[parseArray.length()];
+                String[] event_location = new String[parseArray.length()];
+
 
                 for(int i =0; i < parseArray.length(); i++){
                     JSONObject contentObject = (JSONObject)parseArray.get(i);
 
-                    System.out.println(contentObject.get("event_idx"));
-                    System.out.println(contentObject.get("event_name"));
-                    System.out.println(contentObject.get("event_host"));
-                    System.out.println(contentObject.get("event_start_date"));
-                    System.out.println(contentObject.get("event_end_date"));
-                    System.out.println(contentObject.get("event_location"));
-                    System.out.println(contentObject.get("event_use"));
-                    System.out.println(contentObject.get("event_sort"));
+                    event_name[i] = contentObject.get("event_name").toString();
+                    event_host[i] = contentObject.get("event_host").toString();
+                    event_start_date[i] = contentObject.get("event_start_date").toString();
+                    event_end_date[i] = contentObject.get("event_end_date").toString();
+                    event_location[i] = contentObject.get("event_location").toString();
                 }
+                HashMap<String, String[]> stringHashMap = new HashMap<>();
+                stringHashMap.put("event_name", event_name);
+                stringHashMap.put("event_host", event_host);
+                stringHashMap.put("event_start_date", event_start_date);
+                stringHashMap.put("event_end_date", event_end_date);
+                stringHashMap.put("event_location", event_location);
+
+                return stringHashMap;
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -337,7 +336,29 @@ public class mainHomeFrag extends Fragment {
         }
 
         @Override
-        protected void onPostExecute(String s) {
+        protected void onPostExecute(HashMap<String, String[]> s) {
+
+            String[] title = s.get("event_name");
+            String[] startday = s.get("event_start_date");
+            String[] endday = s.get("event_end_date");
+
+            System.out.println(title[title.length-1]);
+
+            for(int i =0; i <title.length; i++){
+                addItem(R.drawable.test_pink, title[i], startday[i]+"~"+endday[i]);
+            }
+
+            EventAdapter eventAdapter = new EventAdapter(mList);
+            recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
+            recyclerView.setHasFixedSize(true);
+            recyclerView.setItemViewCacheSize(20);
+            recyclerView.setDrawingCacheEnabled(true);
+            recyclerView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
+            RecyclerView.ItemAnimator animator = recyclerView.getItemAnimator();
+            if (animator instanceof SimpleItemAnimator) {
+                ((SimpleItemAnimator) animator).setSupportsChangeAnimations(false);
+            }
+            recyclerView.setAdapter(eventAdapter);
 
             super.onPostExecute(s);
         }
