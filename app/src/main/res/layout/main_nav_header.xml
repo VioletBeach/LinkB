@@ -49,10 +49,10 @@
                 android:gravity="center">
 
                 <ImageView
+                    android:id="@+id/userRoundImage"
                     android:layout_width="88.889dp"
                     android:layout_height="88.889dp"
-                    android:background="@drawable/main_nav_image_round"
-                    android:src="@drawable/ic_baseline_person_24" />
+                    android:src="@drawable/ic_people" />
 
 
             </LinearLayout>
