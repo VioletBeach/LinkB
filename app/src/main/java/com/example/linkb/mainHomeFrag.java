@@ -78,8 +78,6 @@ public class mainHomeFrag extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
 
         //프래그를 누를때마다 계속 아이템이 추가되어 구현
-
-
         mList.clear();
         new RestAPITaskRecommend("http://101.101.161.189/api/index.php/linkb_event/select_recommend_event_list", recyclerView).execute();
 
@@ -93,11 +91,12 @@ public class mainHomeFrag extends Fragment {
         final Main_list_Adapter myAdapter = new Main_list_Adapter(getActivity(), titleDataList);
         main_list.setAdapter(myAdapter);
 
+        //드러워블 리스트뷰 클릭 리스너
         main_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(getActivity().getApplicationContext(),
-                        myAdapter.getItem(position).getTitle(),
+                        myAdapter.getItem(position).getContext(),
                         Toast.LENGTH_SHORT).show();
             }
         });
@@ -253,8 +252,8 @@ public class mainHomeFrag extends Fragment {
     public void InitializeListData() {
         titleDataList = new ArrayList<Main_SampleData>();
 
-        titleDataList.add(new Main_SampleData("행사목록", "다양한 행사들을 확인하세요"));
-        titleDataList.add(new Main_SampleData("행사참여하기", "행사등록 및 참여확인"));
+        titleDataList.add(new Main_SampleData(R.drawable.ic_baseline_list_alt_24, "행사목록"));
+        titleDataList.add(new Main_SampleData(R.drawable.ic_baseline_link_24, "행사참여하기"));
 
     }
 

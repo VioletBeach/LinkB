@@ -1,16 +1,16 @@
 package com.example.linkb;
 
 public class Main_SampleData {
-    private String title;
+    private int image;
     private String context;
 
-    public Main_SampleData(String title, String context){
-        this.title = title;
+    public Main_SampleData(int image, String context){
+        this.image = image;
         this.context = context;
     }
 
-    public String getTitle(){
-        return this.title;
+    public int getTitle(){
+        return this.image;
     }
 
     public String getContext(){

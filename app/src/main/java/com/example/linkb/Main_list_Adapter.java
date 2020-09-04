@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -39,10 +40,10 @@ public class Main_list_Adapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = mLayoutInflater.inflate(R.layout.main_nav_row,null);
         TextView title = view.findViewById(R.id.textView1);
-        TextView context = view.findViewById(R.id.textView2);
+        ImageView image = view.findViewById(R.id.listImageView);
 
-        title.setText(sample.get(position).getTitle());
-        context.setText(sample.get(position).getContext());
+        title.setText(sample.get(position).getContext());
+        image.setImageResource(sample.get(position).getTitle());
         return view;
     }
 }
