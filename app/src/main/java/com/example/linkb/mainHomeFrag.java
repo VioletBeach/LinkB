@@ -1,6 +1,9 @@
 package com.example.linkb;
 
 import android.content.Intent;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.OvalShape;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -47,6 +51,7 @@ public class mainHomeFrag extends Fragment {
     ListView main_list;
     ViewPager2 photoview;
     CircleIndicator3 indicator;
+    ImageView user_img;
     boolean photo_isFirst = true;
 
 
@@ -73,6 +78,16 @@ public class mainHomeFrag extends Fragment {
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_menu_24);
+
+        //사용자 사진
+        user_img = view.findViewById(R.id.userRoundImage);
+
+        GradientDrawable drawable=
+                (GradientDrawable) getContext().getDrawable(R.drawable.main_nav_image_round);
+
+        user_img.setBackground(drawable);
+        user_img.setClipToOutline(true);
+
 
         //추천 이벤트
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
